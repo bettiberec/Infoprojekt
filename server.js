@@ -3,7 +3,7 @@ const express = require("express");
 const app = express();
 
 app.get("/", (req, res) => {
-  res.send("Szerver működik. Ez egy próba.");
+  res.send("Szerver működik. Ez egy próba. És ez is");
 });
 
 app.listen(3000, () => {
