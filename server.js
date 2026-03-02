@@ -9,4 +9,5 @@ app.get("/", (req, res) => {
 app.listen(3000, () => {
   console.log("Server fut: http://localhost:3000");
   console.log("Berec Betti dsfds");
+  console.log("Berec Bettiw");
 });
