@@ -218,3 +218,9 @@ body{
     font-size: 22px;
     font-weight: bold;
 }
+
+.required::after {
+    content: "*";
+    color: red;
+    font-weight: bold;
+}
