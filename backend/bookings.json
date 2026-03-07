@@ -75,12 +75,12 @@
     "name": "Betti",
     "email": "berec.bettina@gmail.com",
     "phone": "06204075363",
-    "guests": 6,
+    "guests": 5,
     "note": "Tesz",
     "bookingType": "normal",
-    "paymentMethod": "none",
-    "price": 36000,
-    "status": "booked",
+    "paymentMethod": "cash",
+    "price": 30000,
+    "status": "modified",
     "createdBy": "user",
     "createdAt": "2026-03-06T18:06:49.661Z"
   },
@@ -151,22 +151,5 @@
     "status": "modified",
     "createdBy": "user",
     "createdAt": "2026-03-07T16:43:18.505Z"
-  },
-  {
-    "id": "1772906634307",
-    "roomId": "bortonbuntetes",
-    "date": "2026-03-02",
-    "time": "15:00",
-    "name": "dsa",
-    "email": "dsa@dsa",
-    "phone": "dsa",
-    "guests": 5,
-    "note": "",
-    "bookingType": "birthday",
-    "paymentMethod": "cash",
-    "price": 50000,
-    "status": "booked",
-    "createdBy": "admin",
-    "createdAt": "2026-03-07T18:03:54.307Z"
   }
 ]
