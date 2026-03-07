@@ -30,19 +30,19 @@ app.get("/", (req, res) => {
 
 //API hívások
 
-// 1. GET /api/rooms
+// 1. GET /api/rooms --> szobák lekérdezése
 app.get("/api/rooms", (req, res) => {
   const rooms = readJsonFile(ROOMS_FILE);
   res.json(rooms);
 });
 
-// 2. GET /api/bookings
+// 2. GET /api/bookings --> időpontok lekérdezése
 app.get("/api/bookings", (req, res) => {
   const bookings = readJsonFile(BOOKINGS_FILE);
   res.json(bookings);
 });
 
-// 3. POST /api/bookings
+// 3. POST /api/bookings --> időpont lefoglalása
 app.post("/api/bookings", (req, res) => {
   const bookings = readJsonFile(BOOKINGS_FILE);
 
@@ -50,11 +50,13 @@ app.post("/api/bookings", (req, res) => {
   const date = String(req.body.date).trim();
   const time = String(req.body.time).trim();
 
-  const existingBooking = bookings.find(booking =>
-    String(booking.roomId).trim() === roomId &&
-    String(booking.date).trim() === date &&
-    String(booking.time).trim() === time
+  const existingBooking = bookings.find(
+    booking =>
+      String(booking.roomId).trim() === roomId &&
+      String(booking.date).trim() === date &&
+      String(booking.time).trim() === time
   );
+
   if (existingBooking) {
     return res.status(409).json({
       message: "Ez az időpont már foglalt."
@@ -62,6 +64,16 @@ app.post("/api/bookings", (req, res) => {
   }
 
   const guests = Number(req.body.guests);
+
+  const bookingType = req.body.bookingType || "normal";
+  const paymentMethod = req.body.paymentMethod || "none";
+  const createdBy = req.body.createdBy || "user";
+
+  let price = guests * 6000;
+
+  if (bookingType === "birthday") {
+    price += 20000;
+  }
 
   const newBooking = {
     id: Date.now().toString(),
@@ -73,11 +85,11 @@ app.post("/api/bookings", (req, res) => {
     phone: req.body.phone,
     guests,
     note: req.body.note || "",
-    bookingType: "normal",
-    paymentMethod: "none",
-    price: guests * 6000,
+    bookingType,
+    paymentMethod,
+    price,
     status: "booked",
-    createdBy: "user",
+    createdBy,
     createdAt: new Date().toISOString()
   };
 
@@ -127,14 +139,113 @@ app.get("/api/slots", (req, res) => {
     .filter(booking => booking.roomId === roomId && booking.date === date)
     .map(booking => booking.time);
 
-  const slots = allSlots.map(time => ({
+  const slots = allSlots.map(time => {
+  const booking = bookings.find(
+    b => b.roomId === roomId && b.date === date && b.time === time
+  );
+
+  return {
     time,
-    available: !bookedTimes.includes(time)
-  }));
+    available: !booking,
+    bookingType: booking ? booking.bookingType : null,
+    status : booking ? booking.status : null,
+    bookingId : booking ? booking.id : null
+  };
+});
 
   res.json({
     roomId,
     date,
     slots
+  });
+});
+
+//5. GET api/bookings/details --> konkrét foglalás lekérdezése
+app.get("/api/bookings/details", (req, res) => {
+  const { roomId, date, time } = req.query;
+
+  if (!roomId || !date || !time) {
+    return res.status(400).json({
+      message: "A roomId, date és time megadása kötelező."
+    });
+  }
+
+  const bookings = readJsonFile(BOOKINGS_FILE);
+
+  const booking = bookings.find(
+    b =>
+      String(b.roomId).trim() === String(roomId).trim() &&
+      String(b.date).trim() === String(date).trim() &&
+      String(b.time).trim() === String(time).trim()
+  );
+
+  if (!booking) {
+    return res.status(404).json({
+      message: "Nem található foglalás."
+    });
+  }
+
+  res.json(booking);
+});
+
+//6. DELETE api/bookings --> időpont törlése
+app.delete("/api/bookings/:id", (req, res) => {
+  const { id } = req.params;
+  const bookings = readJsonFile(BOOKINGS_FILE);
+
+  const filteredBookings = bookings.filter(b => b.id !== id);
+
+  if (filteredBookings.length === bookings.length) {
+    return res.status(404).json({
+      message: "Nem található foglalás."
+    });
+  }
+
+  writeJsonFile(BOOKINGS_FILE, filteredBookings);
+
+  res.json({
+    message: "Foglalás sikeresen törölve."
+  });
+});
+
+//7. PATCh api/bookings --> időpont szerkesztése
+app.patch("/api/bookings/:id", (req, res) => {
+  const { id } = req.params;
+  const bookings = readJsonFile(BOOKINGS_FILE);
+
+  const index = bookings.findIndex(b => b.id === id);
+
+  if (index === -1) {
+    return res.status(404).json({
+      message: "Nem található foglalás."
+    });
+  }
+
+  const oldBooking = bookings[index];
+
+  const updatedBooking = {
+    ...oldBooking,
+    name: req.body.name ?? oldBooking.name,
+    email: req.body.email ?? oldBooking.email,
+    phone: req.body.phone ?? oldBooking.phone,
+    guests: req.body.guests ?? oldBooking.guests,
+    note: req.body.note ?? oldBooking.note,
+    bookingType: req.body.bookingType ?? oldBooking.bookingType,
+    paymentMethod: req.body.paymentMethod ?? oldBooking.paymentMethod,
+    status: "modified"
+  };
+
+  let price = Number(updatedBooking.guests) * 6000;
+  if (updatedBooking.bookingType === "birthday") {
+    price += 20000;
+  }
+  updatedBooking.price = price;
+
+  bookings[index] = updatedBooking;
+  writeJsonFile(BOOKINGS_FILE, bookings);
+
+  res.json({
+    message: "Foglalás sikeresen módosítva.",
+    booking: updatedBooking
   });
 });

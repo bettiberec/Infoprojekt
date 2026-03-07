@@ -122,105 +122,105 @@ body{
 }
 
 .legend-item {
-    display: flex;
-    align-items: center;
-    gap: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .week-navigation-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
 }
 
 .week-arrow {
-    font-size: 56px;
-    font-weight: bold;
-    user-select: none;
-    color: #666;
-    cursor: pointer;
-    width: 60px;
-    text-align: center;
+  font-size: 56px;
+  font-weight: bold;
+  user-select: none;
+  color: #666;
+  cursor: pointer;
+  width: 60px;
+  text-align: center;
 }
 
 .week-arrow.disabled {
-    color: #a8a8a8;
-    cursor: not-allowed;
+  color: #a8a8a8;
+  cursor: not-allowed;
 }
 
 .booking-table-wrapper {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .booking-table {
-    border-collapse: collapse;
-    background-color: #ececec;
+  border-collapse: collapse;
+  background-color: #ececec;
 }
 
 .booking-table th,
 .booking-table td {
-    border: 3px solid #111;
-    width: 95px;
-    height: 58px;
-    text-align: center;
-    vertical-align: middle;
-    font-size: 18px;
-    font-weight: bold;
+  border: 3px solid #111;
+  width: 95px;
+  height: 58px;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 18px;
+  font-weight: bold;
 }
 
 .booking-table th {
-    background-color: #e3c06d;
-    padding: 4px;
+  background-color: #e3c06d;
+  padding: 4px;
 }
 
 .time-cell {
-    background-color: #f2f2f2;
-    width: 90px;
+  background-color: #f2f2f2;
+  width: 90px;
 }
 
 .day-header {
-    font-size: 16px;
-    line-height: 1.15;
+  font-size: 16px;
+  line-height: 1.15;
 }
 
 .day-date {
-    display: block;
-    font-size: 13px;
-    font-weight: normal;
-    margin-top: 4px;
+  display: block;
+  font-size: 13px;
+  font-weight: normal;
+  margin-top: 4px;
 }
 
 .slot-btn {
-    background: none;
-    border: none;
-    font-size: 24px;
-    font-weight: bold;
+  background: none;
+  border: none;
+  font-size: 24px;
+  font-weight: bold;
 }
 
 .slot-free {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .slot-booked {
-    cursor: not-allowed;
+  cursor: not-allowed;
 }
 
 .slot-unavailable {
-    color: #666;
-    font-size: 20px;
+  color: #666;
+  font-size: 20px;
 }
 
 .selected-slot-info {
-    text-align: center;
-    margin-top: 24px;
-    font-size: 22px;
-    font-weight: bold;
+  text-align: center;
+  margin-top: 24px;
+  font-size: 22px;
+  font-weight: bold;
 }
 
 .required::after {
-    content: "*";
-    color: red;
-    font-weight: bold;
+  content: "*";
+  color: red;
+  font-weight: bold;
 }
