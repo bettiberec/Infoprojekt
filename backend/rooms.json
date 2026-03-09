@@ -1,0 +1,20 @@
+[
+  {
+    "id": "bortonbuntetes",
+    "name": "Börtönbüntetés",
+    "image": "images/borton.jpg",
+    "description": "Szökj meg a börtönből, mielőtt lejár az idő."
+  },
+  {
+    "id": "elveszett_piramis",
+    "name": "Elveszett piramis",
+    "image": "images/piramis.jpg",
+    "description": "Fejtsd meg az ősi piramis titkát."
+  },
+  {
+    "id": "titkosugynok_kuldetes",
+    "name": "A titkosügynök küldetés",
+    "image": "images/titkosugynok.jpg",
+    "description": "Teljesítsd az ügynöki küldetést időn belül."
+  }
+]
