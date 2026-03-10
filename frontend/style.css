@@ -1,23 +1,43 @@
 body{
   margin:0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: black;
+  color: white;
+}
+
+h1,h2,h3{
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+.nav-menu a,
+.cta-btn{
   font-family: Arial, Helvetica, sans-serif;
-  background-color:#e6e6e6;
+  font-weight: bold;
+  letter-spacing: 1px;
 }
 
 /* Navbar */
 .navbar{
-  background-color:black;
-  display:flex;
-  align-items:center;
-  padding:15px 40px;
+  background-image:linear-gradient(to right,#3b0100,#b60000, #3b0100);
+  padding:10px 40px;
+}
+
+.nav-container{
+  width: 1200px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .logo{
-  color:#f5b700;
-  font-size:36px;
-  font-weight:bold;
-  margin-right:50px;
-  text-decoration:none;
+  height: 60px;
+  cursor: pointer;
+  transition: filter 0.3s ease;
+}
+
+.logo:hover{
+  filter: brightness(0) invert(1);
 }
 
 .nav-links{
@@ -26,13 +46,223 @@ body{
 }
 
 .nav-links a{
-  color:#f5b700;
+  color:white;
   text-decoration:none;
-  font-size:20px;
+  background: black;
+  padding: 8px 14px;
+  margin-left: 10px;
+  border-radius: 10px;
+  font-weight: bold;
+  transition: all 0.25s ease;
 }
 
 .nav-links a:hover{
-  text-decoration:underline;
+  background: #222121;
+  transform: scale(1.1);
+}
+
+/* Hero */
+
+.hero{
+  text-align: center;
+  padding: 80px 20px;
+  background: black;
+}
+
+.hero-logo{
+  width: 400px;
+}
+
+.hero h1{
+  color:#d40000;
+  font-size: 40px;
+}
+
+.hero-subtitle{
+  font-size: 26px;
+  color:#d40000;
+}
+
+/* Bemutatkozás */
+
+.about{
+  background: url("images/hatter.png");
+}
+
+.about-overlay{
+  width: 100%;
+}
+
+.about-container{
+  max-width: 1250px;
+  margin: 0 auto;
+  padding: 10px 40px;
+}
+
+.about-header{
+  margin-bottom: 30px;
+}
+
+.about-title-block{
+  display: flex;
+  align-items: flex-start;
+  gap: 22px;
+  margin-bottom: 8px;
+}
+
+.big-number{
+  font-size: 150px;
+  line-height: 0.8;
+  color:#d40000;
+  font-family: Georgia, serif;
+  font-weight: normal;
+}
+
+.about-title-block h2{
+  margin: 8px 0 0 0;
+  color:#d40000;
+  font-size: 35px;
+  line-height: 1;
+  font-weight: bold;
+  padding-top: 45px;
+}
+
+.about-header h3{
+  margin: 10px 0 0 120px;
+  font-size: 45px;
+  line-height: 1.1;
+  font-weight: bold;
+  color: white;
+  font-family: Georgia, serif;
+}
+
+.about-row{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 55px;
+  align-items: center;
+  margin-bottom: 45px;
+}
+
+.about-image img{
+  display: block;
+  object-fit:scale-down;
+}
+
+.about-row-top .about-image img{
+  width: 440px;
+  height: 230px;
+}
+
+.about-row-top .about-text{
+  justify-self: end;
+  text-align: left;
+  max-width: 620px;
+}
+
+.about-row-middle .about-text{
+  max-width: 700px;
+  text-align: right;
+}
+
+.about-row-middle .about-image img{
+  width: 455px;
+  height: 310px;
+}
+
+.about-row-bottom .about-image img{
+  width: 440px;
+  height: 220px;
+}
+
+.about-row-bottom .about-text{
+  justify-self: end;
+  text-align: left;
+  max-width: 650px;
+}
+
+.about-text p{
+  margin: 0 0 0px 0;
+  font-size: 23px;
+  line-height: 1.45;
+  color: white;
+}
+
+/* CTA */
+
+.cta{
+  background-image:linear-gradient(to right,#3b0100,#b60000, #3b0100);
+  text-align:center;
+  padding:40px;
+}
+
+.cta-buttons{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 20px
+}
+
+.cta-btn{
+  background:black;
+  color:white;
+  padding:14px 24px;
+  border-radius:30px;
+  text-decoration:none;
+  font-weight:bold;
+  display: inline-block;
+  transition: all 0.25s ease;
+}
+
+.cta-btn:hover{
+  background: #222121;
+  transform: scale(1.1);
+}
+
+/* Miért mi */
+
+.why{
+  padding:70px 20px;
+  text-align:center;
+  background:url("images/hatter.png");
+}
+
+.why-container{
+  max-width: 950px;
+  margin: 0 auto;
+}
+
+.why h2{
+  color:#d40000;
+  font-size:64px;
+  margin-bottom: 35px;
+}
+
+.why-item{
+  margin-bottom: 28px;
+}
+
+.why-item h3{
+  margin: 0 0 8px 0;
+  color:#d40000;
+  font-size: 28px;
+}
+
+.why-item p{
+  margin: 0;
+  color: white;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+/* FOOTER */
+
+.image-footer{
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 /* Main */
