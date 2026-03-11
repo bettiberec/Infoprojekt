@@ -542,3 +542,69 @@ h1,h2,h3{
     color:red;
     font-size:150%;
 }
+
+                                                 /* ANGI */
+/* INFORM */
+.inform{
+  background: url("images/szuletesnap_hatter1.png");
+  padding:40px 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.inform-test{
+  max-width: 950px;
+  margin: 0 auto;
+   text-align: center;
+   font-weight: bold;
+   font-size:26px;
+   
+}
+.inform-h1{
+   
+    color:black;
+    font-size: 40px;
+}
+.inform-h2{
+    font-size: 35px;
+}
+
+/* CSOMAG */
+.csomag{
+  background: url("images/hatter.png");
+  padding:40px 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.csomag-test{
+  max-width: 950px;
+  margin: 0 auto;
+   text-align: center;
+    font-size:26px;
+    
+}
+.csomag-h1{
+   
+    color:red;
+      font-size: 40px;
+}
+
+.csomag-h3{
+    font-weight: bolder;
+    text-align: left;
+    width: 850px;
+     margin: 0 auto;
+      line-height: 3;
+      text-transform: uppercase;
+    
+}
+.csomag-szoveg{
+    width: 750px;
+  margin: 0 auto;
+  text-align: left; 
+}
+.csomag-ar{
+    text-transform: uppercase;
+    text-align:center
+}
