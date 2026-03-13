@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<title>Project Escape</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="main-container">
+    <div class="navbar">
+        <div class="main-logo">
+            <img src="images/logofeher.png" alt="Project Escape logo">
+        </div>
+
+        <div class="menu">
+
+            <div class="menu-item">
+                <button class="btn blue" id="roomsBtn">Szobák</button>
+
+                <div class="dropdown" id="roomsMenu">
+                    <button><a href="admin-room-borton.html" 
+                        style="text-decoration:none; color: white;">Börtön</a></button>
+                    <button><a href="admin-room-piramis.html" 
+                        style="text-decoration:none; color: white;">Piramis</a></button>
+                    <button><a href="admin-room-titkosugynok.html" 
+                        style="text-decoration:none; color: white;">Ügynök</a></button>
+                </div>
+            </div>
+
+            <button class="btn"><a href="admin-bevetel.html" 
+                style="text-decoration:none; color: white;">Bevétel</a></button>
+            <button class="btn"><a href="admin-fiok.html" 
+                style="text-decoration:none; color: white;">Fiók</a></button>
+
+        </div>
+
+        <div class="right">
+            <button class="btn red"><a href="INF-28 Admin Log in.html" style="text-decoration:none; color: white;">Kijelentkezés</a></button>
+        </div>
+    </div>
+</div>
+<script>
+    const btn = document.getElementById("roomsBtn");
+    const menu = document.getElementById("roomsMenu");
+
+        btn.addEventListener("click", function(e){
+            e.stopPropagation();
+            menu.classList.toggle("show");
+    });
+
+        document.addEventListener("click", function(){
+            menu.classList.remove("show");
+    });
+</script>
+</body>
+</html>

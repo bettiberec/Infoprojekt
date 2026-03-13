@@ -1,3 +1,4 @@
+
 body{
   margin:0;
   font-family: Arial, Helvetica, sans-serif;
@@ -84,6 +85,7 @@ body{
 }
 
 /* Dashboard */
+
 .dashboard-page{
   padding:40px;
 }
@@ -126,6 +128,7 @@ body{
 }
 
 /* Admin foglalási tábla */
+
 .admin-room-page{
   padding:25px 30px 60px;
 }
@@ -373,3 +376,164 @@ body{
   font-weight: bold;
   cursor: pointer;
 }
+
+
+
+
+/* ------INF-28 Admin Login írta: Józsi------ */
+.container {
+    background: #d9d9d9;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.login-container {
+    text-align: center;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login-form input {
+    width: 220px;
+    padding: 10px;
+    margin: 8px 0;
+    border: none;
+    background: #eeeeee;
+    border-radius: 4px;
+    font-size: 14px;
+    box-shadow: 3px 3px 5px gray;
+}
+
+.login-form input::placeholder {
+    color: #bdbdbd;
+    font-style: italic;
+    font-weight: bold;
+}
+
+.error {
+    color: red;
+    font-size: 14px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.login-form button {
+    width: 220px;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    background: #4a6cf7;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.login-form button:hover {
+    background: #3d5ed8;
+}
+
+.login-logo{
+    width: 220px;
+    margin-bottom: 20px;
+}
+
+/* ------INF-28 Admin Main írta: Józsi------ */
+
+    .main-container{
+        margin:0;
+        font-family: Arial, Helvetica, sans-serif;
+        background:#dcdcdc;
+    }
+
+    .navbar{
+        background:#2f2f2f;
+        height:70px;
+        display:flex;
+        align-items:center;
+        padding:0 150px 0 150px;
+    }
+
+    .main-logo img{
+        height:45px;
+    }
+
+    .menu{
+        display:flex;
+        align-items:center;
+        gap:15px;
+        margin-left:40px;
+    }
+
+    .menu-item{
+        position:relative;
+    }
+
+    .btn{
+        padding:10px 22px;
+        border-radius:6px;
+        border:none;
+        background:#8c8f9a;
+        color:white;
+        font-weight:bold;
+        cursor:pointer;
+        transition:0.2s;
+        margin: 0 5px 0 5px
+    }
+
+    .btn:hover{
+        opacity:0.9;
+    }
+
+    .btn.blue{
+        background:#3f6fe6;
+    }
+
+    .btn.red{
+        background:#e30d2f;
+    }
+
+    .dropdown{
+        position:absolute;
+        top:50px;
+        left:0;
+        background:#2f2f2f;
+        border-radius:8px;
+        padding:10px;
+        display:none;
+        flex-direction:column;
+        gap:8px;
+        min-width:140px;
+    }
+
+    .dropdown button{
+        background:#8c8f9a;
+        border:none;
+        color:white;
+        padding:10px 20px;
+        border-radius:6px;
+        cursor:pointer;
+        font-weight: bold;
+    }
+
+    .dropdown button:hover{
+        background:#a0a3ad;
+    }
+
+    .dropdown.show{
+        display:flex;
+    }
+
+    .right{
+        margin-left:auto;
+    }
+
+    .content{
+        height:600px;
+    }
