@@ -12,7 +12,8 @@ if (loginForm) {
 
     // ideiglenes fix login
     if (email === "admin@escape.hu" && password === "admin123") {
-      window.location.href = "dashboard.html";
+      //window.location.href = "dashboard.html";
+      window.location.href = "INF-28 Admin Main.html";
     } else {
       errorMessage.textContent = "Hibás email vagy jelszó.";
     }
