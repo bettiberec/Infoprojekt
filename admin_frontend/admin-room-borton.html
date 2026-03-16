@@ -2,18 +2,47 @@
 <html lang="hu">
 <head>
   <meta charset="UTF-8">
-  <title>Admin - Börtönbüntetés</title>
+  <title>Admin - Börtönszökés</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <!------------------------------NAVBAR---------------------------->
-  <div class="admin-navbar">
-    <a href="dashboard.html" class="admin-logo">Logó</a>
+  <div class="main-container">
+    <nav class="navbar">
+      <div class="main-logo">
+        <a href="INF-28 Admin Main.html">
+          <img src="images/logofeher.png" alt="Project Escape logo">
+        </a>
+      </div>
+
+      <div class="menu">
+        <div class="menu-item">
+          <button class="btn dropdownBtn" id="roomsBtn" type="button">
+            Szobák
+          </button>
+
+          <div class="dropdown" id="roomsMenu">
+            <a class="dropdown-link" href="admin-room-borton.html" style="background: #4f83ff;">Börtön</a>
+            <a class="dropdown-link" href="admin-room-piramis.html">Piramis</a>
+            <a class="dropdown-link" href="admin-room-titkosugynok.html">Ügynök</a>
+          </div>
+        </div>
+
+        <a class="btn" href="admin-bevetel.html">Bevétel</a>
+        <a class="btn" href="admin-fiok.html">Fiók</a>
+      </div>
+
+      <div class="right">
+          <button id="kijelentkezes" class="btn btn-red" type="button">
+            Kijelentkezés
+          </button>
+      </div>
+    </nav>
   </div>
 
   <!------------------------------Admin szoba táblázat---------------------------->
   <section class="admin-room-page">
-    <h1 class="admin-room-title">Börtönbüntetés - Admin</h1>
+    <h1 class="admin-room-title">Börtönszökés - Admin</h1>
 
     <div class="admin-week-navigation-wrapper">
       <span id="prevWeekBtn" class="admin-week-arrow">⬅</span>
@@ -169,6 +198,34 @@
 
 <!------------------------------Script---------------------------->
 <script>
+  //Ez a NAVBAR. Ne módosítsd!
+    const roomsBtn = document.getElementById("roomsBtn");
+    const roomsMenu = document.getElementById("roomsMenu");
+    const logoutBtn = document.getElementById("kijelentkezes");
+
+    roomsBtn.addEventListener("click", function (e) {
+      e.stopPropagation();
+      roomsMenu.classList.toggle("show");
+      roomsBtn.classList.toggle("active");
+    });
+
+    roomsMenu.addEventListener("click", function (e) {
+      e.stopPropagation();
+    });
+
+    document.addEventListener("click", function () {
+      roomsMenu.classList.remove("show");
+      roomsBtn.classList.remove("active");
+    });
+
+    logoutBtn.addEventListener("click", function () {
+      const confirmLogout = confirm("Biztos ki akar jelentkezni?");
+      if (confirmLogout) {
+        window.location.href = "INF-28 Admin Log in.html";
+      }
+    });
+    //Itt ér véget a navbar!
+
   //Változók beállítása
   const roomId = "bortonbuntetes";
   const timeSlots = ["09:00", "10:30", "12:00", "13:30", "15:00", "16:30", "18:00", "19:30", "21:00"];

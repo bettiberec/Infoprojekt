@@ -458,6 +458,7 @@ body{
         display:flex;
         align-items:center;
         padding:0 150px 0 150px;
+        overflow: visible;
     }
 
     .main-logo img{
@@ -469,13 +470,16 @@ body{
         align-items:center;
         gap:15px;
         margin-left:40px;
+        overflow: visible;
     }
 
     .menu-item{
         position:relative;
     }
 
-    .btn{
+    .btn,
+    .dropdownBtn,
+    .btn-red{
         padding:10px 22px;
         border-radius:6px;
         border:none;
@@ -484,19 +488,26 @@ body{
         font-weight:bold;
         cursor:pointer;
         transition:0.2s;
-        margin: 0 5px 0 5px
+        margin: 0 5px;
+        text-decoration: none;
+        box-sizing: border-box;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        height: 35px;
+        font-size: 16px;
     }
 
     .btn:hover{
-        opacity:0.9;
+        background: #5f5f5f;
     }
 
-    .btn.blue{
-        background:#3f6fe6;
-    }
-
-    .btn.red{
+    .btn-red{
         background:#e30d2f;
+    }
+
+    .btn-red:hover{
+        background:#a00a23;
     }
 
     .dropdown{
@@ -509,25 +520,35 @@ body{
         display:none;
         flex-direction:column;
         gap:8px;
-        min-width:140px;
+        min-width:120px;
     }
 
-    .dropdown button{
-        background:#8c8f9a;
-        border:none;
-        color:white;
-        padding:10px 20px;
-        border-radius:6px;
-        cursor:pointer;
-        font-weight: bold;
+    .dropdownBtn.active{
+      background: #4f83ff;
     }
 
-    .dropdown button:hover{
-        background:#a0a3ad;
+    .dropdown-link {
+      display: block;
+      padding: 10px 16px;
+      border-radius: 6px;
+      background: #8c8f9a;
+      color: white;
+      text-decoration: none;
+      text-align: center;
+      margin-bottom: 8px;
+      font-weight:bold;
+    }
+
+    .dropdownBtn:hover{
+        background: #5f5f5f;
+    }
+
+    .dropdown-link:hover{
+        background: #5f5f5f;
     }
 
     .dropdown.show{
-        display:flex;
+        display:block;
     }
 
     .right{

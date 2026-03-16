@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <title>Project Escape</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="main-container">
+    <nav class="navbar">
+      <div class="main-logo">
+        <a href="INF-28 Admin Main.html">
+          <img src="images/logofeher.png" alt="Project Escape logo">
+        </a>
+      </div>
+
+      <div class="menu">
+        <div class="menu-item">
+          <button class="btn dropdownBtn" id="roomsBtn" type="button">
+            Szobák
+          </button>
+
+          <div class="dropdown" id="roomsMenu">
+            <a class="dropdown-link" href="admin-room-borton.html">Börtön</a>
+            <a class="dropdown-link" href="admin-room-piramis.html">Piramis</a>
+            <a class="dropdown-link" href="admin-room-titkosugynok.html">Ügynök</a>
+          </div>
+        </div>
+
+        <a class="btn" href="admin-bevetel.html" style="background: #4f83ff;">Bevétel</a>
+        <a class="btn" href="admin-fiok.html">Fiók</a>
+      </div>
+
+      <div class="right">
+          <button id="kijelentkezes" class="btn btn-red" type="button">
+            Kijelentkezés
+          </button>
+      </div>
+    </nav>
+  </div>
+
+  <!---------------------------Script--------------------------->
+  <script>
+    //Ez a NAVBAR. Ne módosítsd!
+    const roomsBtn = document.getElementById("roomsBtn");
+    const roomsMenu = document.getElementById("roomsMenu");
+    const logoutBtn = document.getElementById("kijelentkezes");
+
+    roomsBtn.addEventListener("click", function (e) {
+      e.stopPropagation();
+      roomsMenu.classList.toggle("show");
+      roomsBtn.classList.toggle("active");
+    });
+
+    roomsMenu.addEventListener("click", function (e) {
+      e.stopPropagation();
+    });
+
+    document.addEventListener("click", function () {
+      roomsMenu.classList.remove("show");
+      roomsBtn.classList.remove("active");
+    });
+
+    logoutBtn.addEventListener("click", function () {
+      const confirmLogout = confirm("Biztos ki akar jelentkezni?");
+      if (confirmLogout) {
+        window.location.href = "INF-28 Admin Log in.html";
+      }
+    });
+    //Itt ér véget a navbar!
+  </script>
+</body>
+</html>
