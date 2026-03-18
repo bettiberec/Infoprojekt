@@ -337,24 +337,24 @@ h1,h2,h3{
 
 .booking-title {
   text-align: center;
-  font-size: 34px;
   margin-bottom: 14px;
-  color: #111;
+  color:#d40000;
+  font-size: 40px;
 }
 
 .booking-legend {
   display: flex;
   justify-content: center;
-  gap: 35px;
+  gap: 250px;
   margin-bottom: 18px;
-  font-size: 18px;
+  font-size: 30px;
   font-weight: bold;
 }
 
 .legend-item {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 20px;
 }
 
 .week-navigation-wrapper {
@@ -368,7 +368,7 @@ h1,h2,h3{
   font-size: 56px;
   font-weight: bold;
   user-select: none;
-  color: #666;
+  color: red;
   cursor: pointer;
   width: 60px;
   text-align: center;
@@ -386,12 +386,12 @@ h1,h2,h3{
 
 .booking-table {
   border-collapse: collapse;
-  background-color: #ececec;
+  background-color: transparent;
 }
 
 .booking-table th,
 .booking-table td {
-  border: 3px solid #111;
+  border: 3px solid red;
   width: 95px;
   height: 58px;
   text-align: center;
@@ -401,12 +401,12 @@ h1,h2,h3{
 }
 
 .booking-table th {
-  background-color: #e3c06d;
+  background-color: red;
   padding: 4px;
 }
 
 .time-cell {
-  background-color: #f2f2f2;
+  background-color: red;
   width: 90px;
 }
 
@@ -447,6 +447,7 @@ h1,h2,h3{
   margin-top: 24px;
   font-size: 22px;
   font-weight: bold;
+
 }
 
 .required::after {
@@ -751,3 +752,92 @@ h1,h2,h3{
 .elerhetoseg-igazitas p {
     margin: 0;
 }
+                            /* Fanni 2.0 */
+
+/* RED-BUTTONS */
+
+.red-button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 20px
+}
+
+.red-btn{
+  background:red;
+  color:white;
+  padding:14px 24px;
+  border-radius:30px;
+  text-decoration:none;
+  font-weight:bold;
+  display: inline-block;
+  transition: all 0.25s ease;
+}
+
+.red-btn:hover{
+  background: #222121;
+  transform: scale(1.1);
+}
+
+
+/* basics2 */
+
+.basics2{
+  text-align: center;
+  padding: 300px 300px;
+  background: url("images/hatter.png");
+}
+
+.basics2 h1{
+  color:#d40000;
+  font-size: 40px;
+}
+
+.basics2-subtitle{
+  font-size: 26px;
+  color:#f2f2f2;
+}
+
+.basicform {
+  display:none; 
+  max-width:600px; 
+  margin:30px auto 0; 
+  background:transparent; 
+  padding:25px; 
+  border-radius:16px; 
+  box-shadow:0 4px 12px rgba(0,0,0,0.2);
+}
+
+.formtitle {
+  text-align:center; 
+  margin-bottom:20px; 
+  color: red;
+  }
+
+.backpic {
+  background:url("images/hatter.png");
+  width: 100%;
+  height: 200%;
+  }
+
+tr td:first-child,
+tr th:first-child {
+  border-color: black;
+}
+
+tr:first-child th,
+tr:first-child td {
+  border-color: black;
+}
+
+.szabad {
+  width: 10px;
+}
+
+.backpic2 {
+  background:url("images/hatter2.png");
+  width: 100%;
+  height: 200%;
+  }

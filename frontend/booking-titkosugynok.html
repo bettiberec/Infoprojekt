@@ -2,91 +2,104 @@
 <html lang="hu">
 <head>
   <meta charset="UTF-8">
-  <title>A titkosügynök küldetés foglalás</title>
+  <title>Titkosügynök küldetés foglalás</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <!-------------------- NAVBAR -------------------->
-<div class="navbar">
-  <a href="index.html" class="logo">Logó</a>
-
-  <div class="nav-links">
-    <a href="rooms.html">Szobák</a>
-    <a href="booking.html">Foglalás</a>
-    <a href="birthdays.html">Szülinap</a>
-    <a href="team-building.html">Csapatépítés</a>
-    <a href="rules.html">Szabályok</a>
-    <a href="images.html">Galéria</a>
-    <a href="contact.html">Kapcsolat</a>
-  </div>
-</div>
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="index.html">
+        <img src="images/logofekete.png" class="logo">
+      </a>
+      <nav class="nav-links">
+        <a href="rooms.html">Szobák</a>
+        <a href="birthdays.html">Születésnapra</a>
+        <a href="team-building.html">Csapatépítés</a>
+        <a href="rules.html">Szabályok</a>
+        <a href="images.html">Galéria</a>
+        <a href="contact.html">Kapcsolat</a>
+        <a href="booking.html">Foglalás</a>
+      </nav>
+    </div>
+  </header>
 
 <!-------------------- Main -------------------->
-<section class="booking-page">
-  <h1 class="booking-title">A titkosügynök küldetés</h1>
-  <div class="booking-legend">
-    <div class="legend-item">Szabad = ✅</div>
-    <div class="legend-item">Foglalt = ❌</div>
-  </div>
-
-  <div class="week-navigation-wrapper">
-    <span id="prevWeekBtn" class="week-arrow">⬅</span>
-    <div class="booking-table-wrapper">
-      <table class="booking-table" id="bookingTable"></table>
+<section class="backpic">
+  <section class="booking-page">
+    <h1 class="booking-title">TITKOSÜGYNÖK KÜLDETÉS</h1>
+  </section>
+  <!-------------------- Pic -------------------->
+  <section class="pic">
+     <img src="images/titkosugynok_oldal_kozep_hatter.png" alt="Piramis">
+  </section>
+<!-------------------- Jelzés -------------------->
+  <section>
+    <div class="booking-legend">
+      <div class="legend-item"><img style="width: 105px; height: 115px;", src="images/foglalt.png" alt="Foglalt"> Foglalt</div>
+      <div class="legend-item"><img style="width: 200px; height: 115px;", src="images/szabad.png" alt="Szabad"> Szabad</div>
     </div>
-    <span id="nextWeekBtn" class="week-arrow">➡</span>
+  </section>
+<!-------------------- Naptár-------------------->
+  <section>
+    <div class="week-navigation-wrapper">
+      <span id="prevWeekBtn" class="week-arrow">⬅</span>
+      <div class="booking-table-wrapper">
+        <table class="booking-table" id="bookingTable"></table>
+      </div>
+      <span id="nextWeekBtn" class="week-arrow">➡</span>
+    </div>
+<section class="backpic2">
+    <div id="selectedSlotInfo" class="selected-slot-info"></div>
+
+  <div id="bookingAction" style="text-align:center; margin-top:20px; display:none; margin-bottom:20px">
+    <button id="openBookingFormBtn" class="red-btn">Foglalás</button>
   </div>
-  <div id="selectedSlotInfo" class="selected-slot-info"></div>
-</section>
-
-<div id="bookingAction" style="text-align:center; margin-top:20px; display:none;">
-  <button id="openBookingFormBtn" class="room-btn">Foglalás</button>
-</div>
-
 <!-------------------- Foglalási form -------------------->
-<div id="bookingFormContainer" style="display:none; max-width:600px; margin:30px auto 0; background:white; padding:25px; border-radius:16px; box-shadow:0 4px 12px rgba(0,0,0,0.2);">
-  <h2 style="text-align:center; margin-bottom:20px;">Foglalási adatok</h2>
+  <section>
+  <div id="bookingFormContainer" class="basicform">
+    <h2 class="formtitle">Személyes adatok</h2>
 
-  <form id="bookingForm">
-    <div style="margin-bottom:15px;">
-      <label class="required">Név</label><br>
-      <input id="name" required style="width:95%; padding:10px; margin-top:5px;">
-    </div>
+    <form id="bookingForm">
+      <div style="margin-bottom:15px;">
+        <label class="required">Név</label><br>
+        <input id="name" required style="width:95%; padding:10px; margin-top:5px;">
+      </div>
 
-    <div style="margin-bottom:15px;">
-      <label class="required">Email</label><br>
-        <input type="email" id="email" required style="width:95%; padding:10px; margin-top:5px;">
-    </div>
+      <div style="margin-bottom:15px;">
+        <label class="required">Email</label><br>
+          <input type="email" id="email" required style="width:95%; padding:10px; margin-top:5px;">
+      </div>
 
-    <div style="margin-bottom:15px;">
-      <label class="required">Telefonszám</label><br>
-      <input id="phone" required style="width:95%; padding:10px; margin-top:5px;">
-    </div>
+      <div style="margin-bottom:15px;">
+        <label class="required">Telefonszám</label><br>
+        <input id="phone" required style="width:95%; padding:10px; margin-top:5px;">
+      </div>
 
-    <div style="margin-bottom:15px;">
-      <label class="required">Létszám</label><br>
-      <select id="guests" required style="width:99%; padding:10px; margin-top:5px;">
-        <option value="">Válassz létszámot</option>
-        <option value="2">2 fő</option>
-        <option value="3">3 fő</option>
-        <option value="4">4 fő</option>
-        <option value="5">5 fő</option>
-        <option value="6">6 fő</option>
-      </select>
-    </div>
+      <div style="margin-bottom:15px;">
+        <label class="required">Létszám</label><br>
+        <select id="guests" required style="width:99%; padding:10px; margin-top:5px;">
+          <option value="">Válassz létszámot</option>
+          <option value="2">2 fő</option>
+          <option value="3">3 fő</option>
+          <option value="4">4 fő</option>
+          <option value="5">5 fő</option>
+          <option value="6">6 fő</option>
+        </select>
+      </div>
 
-    <div style="margin-bottom:15px;">
-      <label>Megjegyzés</label><br>
-      <textarea id="note" rows="4" style="width:95%; padding:10px; margin-top:5px;"></textarea>
-    </div>
+      <div style="margin-bottom:15px; ">
+        <label>Megjegyzés</label><br>
+        <textarea id="note" rows="4" style="width:95%; padding:10px; margin-top:5px;"></textarea>
+      </div>
 
-    <div style="text-align:center;">
-      <button type="submit" class="room-btn">Foglalás elküldése</button>
-    </div>
-  </form>
-</div>
-
+      <div style="text-align:center;">
+        <button type="submit" class="red-btn">Foglalás elküldése</button>
+      </div>
+    </form>
+  </div>
+  </section>
 <!-------------------- Script -------------------->
 <script>
   //Változók beállítása
@@ -167,6 +180,7 @@
     }
   }
 
+  //Táblázat renderelése
   async function renderWeekTable() {
     const weekDates = getWeekDates(currentWeekOffset);
     bookingTable.innerHTML = "";
@@ -217,7 +231,13 @@
         //Szabad időpontok megjelenítése
         else if (slot.available) {
           const btn = document.createElement("button");
-          btn.textContent = "✅";
+          const img = document.createElement("img");
+          img.src = "images/szabad.png"; 
+          img.alt = "szabad";
+          img.style.width = "50px";   
+
+          btn.appendChild(img);
+
           btn.classList.add("slot-btn", "slot-free");
 
           btn.addEventListener("click", () => {
@@ -233,7 +253,12 @@
         //Nem szabad időpontok megjelenítése
         else {
           const btn = document.createElement("button");
-          btn.textContent = "❌";
+          const img = document.createElement("img");
+          img.src = "images/foglalt.png"; 
+          img.alt = "foglalt";
+          img.style.width = "30px";   
+
+          btn.appendChild(img);
           btn.classList.add("slot-btn", "slot-booked");
           btn.disabled = true;
           td.appendChild(btn);
@@ -330,5 +355,11 @@
     }
   });
 </script>
+<!-------------------- FOOTER -------------------->
+  <footer class="image-footer">
+    <img src="images/lablec_nyitolap.png" alt="Project Escape footer">
+</footer>
+</section>
+</section>
 </body>
 </html>
