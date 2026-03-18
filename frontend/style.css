@@ -697,3 +697,57 @@ h1,h2,h3{
     text-transform: uppercase;
     text-align:center
 }
+/* ELERHETOSEG*/
+.elerhetoseg{
+  background: url("images/hatter.png");
+  padding:40px 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+   min-height: 100vh;
+    overflow: hidden;
+}
+
+.elerhetoseg-test{
+  max-width: 950px;
+  margin: 0 auto;
+   text-align: center;
+   font-weight: bold;
+   font-size:26px;
+}
+.elerhetoseg-h1{
+   
+    color:red;
+      font-size: 40px;
+}
+.elerhetoseg-belso{
+   display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+  margin-top: 30px;
+}
+.elerhetoseg-bal{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  text-align: left;
+}
+.elerhetoseg-jobb{
+    flex: 1;
+}
+.elerhetoseg-emoji{
+   color: red;
+    font-size: 30px; 
+    width: 35px;
+    text-align: center;
+}
+.elerhetoseg-igazitas{
+  display: flex;
+    align-items: center;
+    gap: 15px; 
+    margin-bottom: 20px;
+}
+.elerhetoseg-igazitas p {
+    margin: 0;
+}
