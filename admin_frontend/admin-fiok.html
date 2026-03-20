@@ -39,6 +39,82 @@
       </div>
     </nav>
   </div>
+
+
+  <!----INF-29 Adatok oldal írta: Józsi---->
+  <div class="adatok-container">
+    <h1>Fiók adatok</h1>
+
+    <form class="account-form">
+
+        <div class="form-row">
+            <label for="name">Név:</label>
+            <input type="text" id="name" name="name">
+        </div>
+
+        <div class="form-row">
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" name="email">
+        </div>
+
+        <div class="form-row">
+            <label for="phone">Telefon:</label>
+            <input type="text" id="phone" name="phone">
+        </div>
+
+        <div class="button-row">
+            <button type="button" class="btn" onclick="openModal()">Jelszó Módosítása</button>
+            <button type="button" class="btn" onclick="openEditModal()">Adatok Módosítása</button>
+        </div>
+
+    </form>
+</div>
+
+<!-- Jelszo módosítása ablak -->
+<div id="passwordModal" class="modal">
+    <div class="modal-content">
+        <h2>Jelszó Módosítása</h2>
+
+        <input type="password" placeholder="Régi jelszó">
+        <input type="password" placeholder="Új jelszó">
+        <input type="password" placeholder="Új jelszó megint">
+
+        <div class="modal-buttons">
+            <button class="ok-btn">Rendben</button>
+            <button class="cancel-btn" onclick="closeModal()">Mégse</button>
+        </div>
+    </div>
+</div>
+
+<!-- Adatok módosítása ablak -->
+<div id="editModal" class="modal">
+    <div class="modal-content">
+        <h2 class="edit-title">Kérem írja át a módosítani kívánt adatokat!</h2>
+
+        <div class="form-row">
+            <label>Név:</label>
+            <input type="text">
+        </div>
+
+        <div class="form-row">
+            <label>E-mail:</label>
+            <input type="email">
+        </div>
+
+        <div class="form-row">
+            <label>Telefon:</label>
+            <input type="text">
+        </div>
+
+        <div class="modal-buttons">
+            <button class="ok-btn">Rendben</button>
+            <button class="cancel-btn" onclick="closeEditModal()">Mégse</button>
+        </div>
+    </div>
+</div>
+
+
+
 <!---------------------------Script--------------------------->
   <script>
     //Ez a NAVBAR. Ne módosítsd!
@@ -68,6 +144,22 @@
       }
     });
     //Itt ér véget a navbar!
+
+
+
+    function openModal(){
+      document.getElementById("passwordModal").style.display = "flex";
+    }
+    function closeModal(){
+      document.getElementById("passwordModal").style.display = "none";
+    }
+
+    function openEditModal(){
+      document.getElementById("editModal").style.display = "flex";
+    }
+    function closeEditModal(){
+      document.getElementById("editModal").style.display = "none";
+    }
   </script>
 </body>
 </html>
