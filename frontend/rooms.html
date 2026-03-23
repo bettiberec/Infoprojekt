@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <title>Szobák</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
@@ -27,40 +28,110 @@
     </div>
   </header>
 
-<!-------------------- SZOBÁK -------------------->
+  <!--------------------HERO-------------------->
 
-  <!-------------------- Börtönbüntetés -------------------->
-<section class="rooms-section">
-  <h1 class="rooms-title">Szobáink</h1>
-  <div class="rooms-container">
-    <div class="room-card">
-      <img src="images/borton.png" alt="Börtönbüntetés">
-      <div class="room-card-content">
-        <h2>Börtönbüntetés</h2>
-        <a href="room-borton.html" class="room-btn">Megtekintés</a>
+  <section class="rooms-hero">
+    <div class="rooms-hero-container">
+      <h1>Nem lakatok, hanem élmények várnak!</h1>
+
+      <div class="hero-features">
+        <div class="feature-card">
+
+          <div class="feature-icon"><i class="fa fa-search"></i></div>
+            <h2>TÁGAS<br>JÁTÉKTEREK</h2>
+            <p style="font-size: 23px;">
+              Szabadulószobáink több helyiségből állnak, így a játék folyamatos felfedezést és mozgást kínál. Minden új tér új kihívást és meglepetést rejt a csapat számára.
+            </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fa fa-photo"></i></div>
+          <h2>VALÓSÁGHŰ<br>KÖRNYEZET</h2>
+          <p style="font-size: 23px;">A részletesen kialakított díszleteknek köszönhetően könnyedén beleélhetitek magatokat a történetbe. A helyszínek hangulata segít abban, hogy valóban egy börtönszökés, ősi expedíció vagy titkos küldetés részesei legyetek.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fa fa-gamepad"></i></div>
+          <h2>MODERN<br>JÁTÉKÉLMÉNY</h2>
+          <p style="font-size: 23px;">
+            A feladatok kreatív megoldásokra, logikus gondolkodásra és csapatmunkára épülnek. Interaktív elemek és korszerű megoldások gondoskodnak arról, hogy a játék végig izgalmas és emlékezetes maradjon.
+          </p>
+        </div>
+
       </div>
-  </div>
-  
-  <!-------------------- Elveszett piramis -------------------->
-  <div class="room-card">
-    <img src="images/piramis.png" alt="Elveszett piramis">
-    <div class="room-card-content">
-      <h2>Elveszett piramis</h2>
-      <a href="room-piramis.html" class="room-btn">Megtekintés</a>
     </div>
-  </div>
+  </section>
 
-  <!-------------------- A titkosügynök küldetés -------------------->
-  <div class="room-card">
-    <img src="images/titkosugynok.png" alt="A titkosügynök küldetés">
-    <div class="room-card-content">
-      <h2>A titkosügynök küldetés</h2>
-      <a href="room-titkosugynok.html" class="room-btn">Megtekintés</a>
+<!-------------------- SZOBÁK -------------------->
+<section class="rooms-title-bar">
+  <h2>Szobáink</h2>
+</section>
+
+<!-------------------- SZOBA KÁRTYÁK -------------------->
+<section class="rooms-grid-section">
+  <div class="rooms-grid">
+    <div class="room-card">
+      <img src="images/bortonszokes_kep3.png" alt="Börtönszökés">
+      <a href="room-borton.html" class="room-btn">Börtönszökés</a>
     </div>
-  </div>
 
+    <div class="room-card">
+      <img src="images/elveszett_piramis_kep1.png" alt="Elveszett piramis">
+      <a href="room-piramis.html" class="room-btn">Elveszett piramis</a>
+    </div>
+
+    <div class="room-card">
+      <img src="images/titkosugynok_kep2.png" alt="A titkos ügynök küldetés">
+      <a href="room-titkosugynok.html" class="room-btn">A titkos ügynök<br>küldetés</a>
+    </div>
   </div>
 </section>
+<!-------------------- ÁRAK -------------------->
+<section class="info-section"> 
+  <div class="prices-container">
+    <h2>ÁRAK</h2>
+      <h3>Az élmény értéke közös kalandban mérhető</h3>
+      <p style="font-size: 23px;"> 
+        Hogy mekkora csapattal vágtok bele a szabadulás kihívásába, az a játék árát is befolyásolja. Legyen szó baráti programról, családi kikapcsolódásról, születésnapi ünneplésről vagy csapatépítő eseményről, szabadulószobáink minden létszám esetén izgalmas és emlékezetes élményt kínálnak.
+      </p>
+
+      <p style="font-size: 23px;">
+        A Project Escape szobáiban 2-6 fős csapatok próbálhatják ki magukat. Minél többen érkeztek, annál kedvezőbb az egy főre jutó részvételi díj, miközben a közös élmény csak még intenzívebbé válik.
+      </p>
+
+      <p style="font-size: 23px;">
+        Válasszátok ki a számotokra ideális csapatlétszámot, foglaljatok időpontot, és indulhat a küldetés!
+      </p>          
+
+      <div class="price-box">
+        <h4>Részvételi díjak</h4>
+        <div class="price-value">4000 Ft/fő</div>
+      </div>
+
+      <p style="font-size: 23px;"> 
+        Amennyiben egyedi eseményt, nagyobb csoportos foglalást vagy céges<br> programot szerveznétek, vegyétek fel velünk a kapcsolatot,<br> és személyre szabott ajánlatot készítünk.
+      </p>
+  </div>
+
+<!-------------------- NYITVATARTÁS -------------------->
+  <div class="opening-container">
+    <h2>NYITVATARTÁS</h2>
+    <div class="opening-table">
+      <div class="opening-row"><span>Hétfő</span><span>13:00 22:00</span></div>
+      <div class="opening-row"><span>Kedd</span><span>13:00 22:00</span></div>
+      <div class="opening-row"><span>Szerda</span><span>13:00 22:00</span></div>
+      <div class="opening-row"><span>Csütörtök</span><span>13:00 22:00</span></div>
+      <div class="opening-row"><span>Péntek</span><span>13:00 22:00</span></div>
+      <div class="opening-row"><span>Szombat</span><span>9:00 22:00</span></div>
+      <div class="opening-row"><span>Vasárnap</span><span>9:00 22:00</span></div>
+    </div>
+  </div>
+</section>
+
+<!-------------------- FOOTER -------------------->
+<footer class="image-footer">
+  <img src="images/lablec_nyitolap.png" alt="Project Escape footer">
+</footer>
 
 </body>
 </html>
