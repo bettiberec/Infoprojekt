@@ -69,10 +69,10 @@ app.post("/api/bookings", (req, res) => {
   const paymentMethod = req.body.paymentMethod || "none";
   const createdBy = req.body.createdBy || "user";
 
-  let price = guests * 6000;
+  let price = guests * 4000;
 
   if (bookingType === "birthday") {
-    price += 20000;
+    price = 58990;
   }
 
   const newBooking = {
