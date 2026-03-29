@@ -1,3 +1,4 @@
+
 body{
   margin:0;
   font-family: Arial, Helvetica, sans-serif;
@@ -84,6 +85,7 @@ body{
 }
 
 /* Dashboard */
+
 .dashboard-page{
   padding:40px;
 }
@@ -126,6 +128,7 @@ body{
 }
 
 /* Admin foglalási tábla */
+
 .admin-room-page{
   padding:25px 30px 60px;
 }
@@ -372,4 +375,331 @@ body{
   border-radius: 10px;
   font-weight: bold;
   cursor: pointer;
+}
+
+
+
+
+/* ------INF-28 Admin Login írta: Józsi------ */
+.container {
+    background: #d9d9d9;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.login-container {
+    text-align: center;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login-form input {
+    width: 220px;
+    padding: 10px;
+    margin: 8px 0;
+    border: none;
+    background: #eeeeee;
+    border-radius: 4px;
+    font-size: 14px;
+    box-shadow: 3px 3px 5px gray;
+}
+
+.login-form input::placeholder {
+    color: #bdbdbd;
+    font-style: italic;
+    font-weight: bold;
+}
+
+.error {
+    color: red;
+    font-size: 14px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.login-form button {
+    width: 220px;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    background: #4a6cf7;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.login-form button:hover {
+    background: #3d5ed8;
+}
+
+.login-logo{
+    width: 220px;
+    margin-bottom: 20px;
+}
+
+/* ------INF-28 Admin Main írta: Józsi------ */
+
+    .main-container{
+        margin:0;
+        font-family: Arial, Helvetica, sans-serif;
+        background:#dcdcdc;
+    }
+
+    .navbar{
+        background:#2f2f2f;
+        height:70px;
+        display:flex;
+        align-items:center;
+        padding:0 150px 0 150px;
+        overflow: visible;
+    }
+
+    .main-logo img{
+        height:45px;
+    }
+
+    .menu{
+        display:flex;
+        align-items:center;
+        gap:15px;
+        margin-left:40px;
+        overflow: visible;
+    }
+
+    .menu-item{
+        position:relative;
+    }
+
+    .btn,
+    .dropdownBtn,
+    .btn-red{
+        padding:10px 22px;
+        border-radius:6px;
+        border:none;
+        background:#8c8f9a;
+        color:white;
+        font-weight:bold;
+        cursor:pointer;
+        transition:0.2s;
+        margin: 0 5px;
+        text-decoration: none;
+        box-sizing: border-box;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        height: 35px;
+        font-size: 16px;
+    }
+
+    .btn:hover{
+        background: #5f5f5f;
+    }
+
+    .btn-red{
+        background:#e30d2f;
+    }
+
+    .btn-red:hover{
+        background:#a00a23;
+    }
+
+    .dropdown{
+        position:absolute;
+        top:50px;
+        left:0;
+        background:#2f2f2f;
+        border-radius:8px;
+        padding:10px;
+        display:none;
+        flex-direction:column;
+        gap:8px;
+        min-width:120px;
+    }
+
+    .dropdownBtn.active{
+      background: #4f83ff;
+    }
+
+    .dropdown-link {
+      display: block;
+      padding: 10px 16px;
+      border-radius: 6px;
+      background: #8c8f9a;
+      color: white;
+      text-decoration: none;
+      text-align: center;
+      margin-bottom: 8px;
+      font-weight:bold;
+    }
+
+    .dropdownBtn:hover{
+        background: #5f5f5f;
+    }
+
+    .dropdown-link:hover{
+        background: #5f5f5f;
+    }
+
+    .dropdown.show{
+        display:block;
+    }
+
+    .right{
+        margin-left:auto;
+    }
+
+    .content{
+        height:600px;
+    }
+
+
+/*INF-29 Adatok oldal írta: Józsi*/
+.adatok-container{
+    width:600px;
+    margin:80px auto;
+    text-align:center;
+}
+
+h1{
+    font-size:35px;
+    margin-bottom:50px;
+    text-align: left;
+}
+
+.account-form{
+    width:100%;
+}
+
+.form-row{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin-bottom:25px;
+}
+
+.form-row label{
+    width:120px;
+    font-size:22px;
+    font-weight:bold;
+    text-align:right;
+    margin-right:20px;
+}
+
+.form-row input{
+    width:250px;
+    height:35px;
+    border:none;
+    background:white;
+    border-radius:4px;
+    padding:5px 10px;
+    font-size:16px;
+}
+
+.button-row{
+    display:flex;
+    justify-content:space-between;
+    margin-top:50px;
+}
+
+
+/*INF-29 Adatok oldal jelszó módosítás felugró ablak írta: Józsi*/
+.modal{
+    display:none;
+    position:fixed;
+    z-index:1000;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.3);
+    justify-content:center;
+    align-items:center;
+}
+
+.modal-content{
+    background:#efefef;
+    width:500px;
+    padding:40px;
+    border-radius:10px;
+    text-align:center;
+}
+
+.modal-content h2{
+    font-size:36px;
+    margin-bottom:30px;
+}
+
+.modal-content input{
+    width:100%;
+    padding:15px;
+    margin:10px 0;
+    border:none;
+    background:#e3e3e3;
+    border-radius:8px;
+    font-size:18px;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.modal-buttons{
+    display:flex;
+    justify-content:space-between;
+    margin-top:30px;
+}
+
+.ok-btn{
+    background:#4c6edb;
+    border:none;
+    color:white;
+    font-size:22px;
+    padding:12px 35px;
+    border-radius:12px;
+    cursor:pointer;
+    font-weight: bold;
+}
+
+.cancel-btn{
+    background:#a9a9a9;
+    border:none;
+    font-size:22px;
+    padding:12px 35px;
+    border-radius:12px;
+    cursor:pointer;
+    font-weight: bold;
+}
+
+/*INF-29 Adatok oldal adatok módosítása felugró ablak írta: Józsi*/
+.edit-title{
+    font-size:32px;
+    margin-bottom:35px;
+}
+
+.modal .form-row{
+    display:flex;
+    align-items:center;
+    margin-bottom:20px;
+}
+
+.modal .form-row label{
+    width:120px;
+    font-size:24px;
+    font-weight:bold;
+    text-align:right;
+    margin-right:20px;
+}
+
+.modal .form-row input{
+    flex:1;
+    padding:12px;
+    border:none;
+    background:#e3e3e3;
+    border-radius:8px;
+    font-size:18px;
 }

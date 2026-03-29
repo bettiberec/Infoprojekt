@@ -1,23 +1,44 @@
+/* Betti */
 body{
   margin:0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: black;
+  color: white;
+}
+
+h1,h2,h3{
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+.nav-menu a,
+.cta-btn{
   font-family: Arial, Helvetica, sans-serif;
-  background-color:#e6e6e6;
+  font-weight: bold;
+  letter-spacing: 1px;
 }
 
 /* Navbar */
 .navbar{
-  background-color:black;
-  display:flex;
-  align-items:center;
-  padding:15px 40px;
+  background-image:linear-gradient(to right,#3b0100,#b60000, #3b0100);
+  padding:10px 40px;
+}
+
+.nav-container{
+  width: 1200px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .logo{
-  color:#f5b700;
-  font-size:36px;
-  font-weight:bold;
-  margin-right:50px;
-  text-decoration:none;
+  height: 60px;
+  cursor: pointer;
+  transition: filter 0.3s ease;
+}
+
+.logo:hover{
+  filter: brightness(0) invert(1);
 }
 
 .nav-links{
@@ -26,78 +47,228 @@ body{
 }
 
 .nav-links a{
-  color:#f5b700;
+  color:white;
   text-decoration:none;
-  font-size:20px;
+  background: black;
+  padding: 8px 14px;
+  margin-left: 10px;
+  border-radius: 10px;
+  font-weight: bold;
+  transition: all 0.25s ease;
 }
 
 .nav-links a:hover{
-  text-decoration:underline;
+  background: #222121;
+  transform: scale(1.1);
+}
+
+/* Hero */
+
+.hero{
+  text-align: center;
+  padding: 80px 20px;
+  background: black;
+}
+
+.hero-logo{
+  width: 400px;
+}
+
+.hero h1{
+  color:#d40000;
+  font-size: 40px;
+}
+
+.hero-subtitle{
+  font-size: 26px;
+  color:#d40000;
+}
+
+/* Bemutatkozás */
+
+.about{
+  background: url("images/hatter.png");
+}
+
+.about-overlay{
+  width: 100%;
+}
+
+.about-container{
+  max-width: 1250px;
+  margin: 0 auto;
+  padding: 10px 40px;
+}
+
+.about-header{
+  margin-bottom: 30px;
+}
+
+.about-title-block{
+  display: flex;
+  align-items: flex-start;
+  gap: 22px;
+  margin-bottom: 8px;
+}
+
+.big-number{
+  font-size: 150px;
+  line-height: 0.8;
+  color:#d40000;
+  font-family: Georgia, serif;
+  font-weight: normal;
+}
+
+.about-title-block h2{
+  margin: 8px 0 0 0;
+  color:#d40000;
+  font-size: 35px;
+  line-height: 1;
+  font-weight: bold;
+  padding-top: 45px;
+}
+
+.about-header h3{
+  margin: 10px 0 0 120px;
+  font-size: 45px;
+  line-height: 1.1;
+  font-weight: bold;
+  color: white;
+  font-family: Georgia, serif;
+}
+
+.about-row{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 55px;
+  align-items: center;
+  margin-bottom: 45px;
+}
+
+.about-image img{
+  display: block;
+  object-fit:scale-down;
+}
+
+.about-row-top .about-image img{
+  width: 440px;
+  height: 230px;
+}
+
+.about-row-top .about-text{
+  justify-self: end;
+  text-align: left;
+  max-width: 620px;
+}
+
+.about-row-middle .about-text{
+  max-width: 700px;
+  text-align: right;
+}
+
+.about-row-middle .about-image img{
+  width: 455px;
+  height: 310px;
+}
+
+.about-row-bottom .about-image img{
+  width: 440px;
+  height: 220px;
+}
+
+.about-row-bottom .about-text{
+  justify-self: end;
+  text-align: left;
+  max-width: 650px;
+}
+
+.about-text p{
+  margin: 0 0 0px 0;
+  font-size: 23px;
+  line-height: 1.45;
+  color: white;
+}
+
+/* CTA */
+
+.cta{
+  background-image:linear-gradient(to right,#3b0100,#b60000, #3b0100);
+  text-align:center;
+  padding:40px;
+}
+
+.cta-buttons{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 20px
+}
+
+.cta-btn{
+  background:black;
+  color:white;
+  padding:14px 24px;
+  border-radius:30px;
+  text-decoration:none;
+  font-weight:bold;
+  display: inline-block;
+  transition: all 0.25s ease;
+}
+
+.cta-btn:hover{
+  background: #222121;
+  transform: scale(1.1);
+}
+
+/* Miért mi */
+
+.why{
+  padding:70px 20px;
+  text-align:center;
+  background:url("images/hatter.png");
+}
+
+.why-container{
+  max-width: 950px;
+  margin: 0 auto;
+}
+
+.why h2{
+  color:#d40000;
+  font-size:64px;
+  margin-bottom: 35px;
+}
+
+.why-item{
+  margin-bottom: 28px;
+}
+
+.why-item h3{
+  margin: 0 0 8px 0;
+  color:#d40000;
+  font-size: 28px;
+}
+
+.why-item p{
+  margin: 0;
+  color: white;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+/* FOOTER */
+
+.image-footer{
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 /* Main */
 .main{
   height:600px;
-}
-
-/* Szobák alap */
-.rooms-section {
-  padding: 50px;
-}
-
-.rooms-title {
-  text-align: center;
-  font-size: 36px;
-  margin-bottom: 40px;
-  color: #222;
-}
-
-.rooms-container {
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-  flex-wrap: wrap;
-}
-
-.room-card {
-  background-color: white;
-  width: 300px;
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-}
-
-.room-card img {
-  width: 100%;
-  height: 220px;
-  object-fit: cover;
-  display: block;
-}
-
-.room-card-content {
-  padding: 20px;
-  text-align: center;
-}
-
-.room-card h2 {
-  margin: 0 0 20px 0;
-  font-size: 24px;
-  color: #222;
-}
-
-.room-btn {
-  display: inline-block;
-  background-color: #f5b700;
-  color: black;
-  text-decoration: none;
-  padding: 12px 24px;
-  border-radius: 10px;
-  font-weight: bold;
-  transition: 0.2s;
-}
-
-.room-btn:hover {
-  background-color: #d99f00;
 }
 
 /* Foglalási táblázat */
@@ -107,24 +278,24 @@ body{
 
 .booking-title {
   text-align: center;
-  font-size: 34px;
   margin-bottom: 14px;
-  color: #111;
+  color:#d40000;
+  font-size: 40px;
 }
 
 .booking-legend {
   display: flex;
   justify-content: center;
-  gap: 35px;
+  gap: 250px;
   margin-bottom: 18px;
-  font-size: 18px;
+  font-size: 30px;
   font-weight: bold;
 }
 
 .legend-item {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 20px;
 }
 
 .week-navigation-wrapper {
@@ -138,7 +309,7 @@ body{
   font-size: 56px;
   font-weight: bold;
   user-select: none;
-  color: #666;
+  color: #d40000;
   cursor: pointer;
   width: 60px;
   text-align: center;
@@ -156,12 +327,12 @@ body{
 
 .booking-table {
   border-collapse: collapse;
-  background-color: #ececec;
+  background-color: transparent;
 }
 
 .booking-table th,
 .booking-table td {
-  border: 3px solid #111;
+  border: 3px solid #d40000;
   width: 95px;
   height: 58px;
   text-align: center;
@@ -171,12 +342,12 @@ body{
 }
 
 .booking-table th {
-  background-color: #e3c06d;
+  background-color: #d40000;
   padding: 4px;
 }
 
 .time-cell {
-  background-color: #f2f2f2;
+  background-color: #d40000;
   width: 90px;
 }
 
@@ -217,10 +388,895 @@ body{
   margin-top: 24px;
   font-size: 22px;
   font-weight: bold;
+
 }
 
 .required::after {
   content: "*";
-  color: red;
+  color: #d40000;
   font-weight: bold;
+}
+
+                           /* FANNI */
+/* basics */
+
+.basics{
+  text-align: center;
+  padding: 80px 20px;
+  background:url("images/hatter.png");
+}
+
+.basics h1{
+  color:#d40000;
+  font-size: 40px;
+}
+
+.basics-subtitle{
+  font-size: 26px;
+  color:#f2f2f2;
+}
+
+/* info */
+
+.info{
+  text-align: center;
+  padding: 80px 20px;
+  background:url("images/hatter.png");
+}
+
+.info h1{
+  color:#d40000;
+  font-size: 40px;
+}
+
+.info-subtitle{
+    font-size: 26px;
+  color:#f2f2f2;
+  width: 550px;        
+  margin: 0 auto;     
+  text-align: left; 
+  line-height: 2;
+}
+
+/* RESERV */
+
+.reserv{
+  background-image:linear-gradient(to right,#3b0100,#b60000, #3b0100);
+  text-align:center;
+  padding:15px;
+}
+
+.reserv-button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 20px
+}
+
+.reserv-btn{
+  background:black;
+  color:white;
+  padding:14px 24px;
+  border-radius:30px;
+  text-decoration:none;
+  font-weight:bold;
+  display: inline-block;
+  transition: all 0.25s ease;
+}
+
+.reserv-btn:hover{
+  background: #222121;
+  transform: scale(1.1);
+}
+
+/* MINI PIC */
+
+.minipic{
+  background-image:url("images/hatter.png");
+  padding: 40px;
+}
+
+/* Star */
+
+.star{
+    color:#d40000;
+    font-size:150%;
+}
+
+
+                           /* FANNI */
+/* basics */
+
+.basics{
+  text-align: center;
+  padding: 80px 20px;
+  background:url("images/hatter.png");
+}
+
+.basics h1{
+  color:#d40000;
+  font-size: 40px;
+}
+
+.basics-subtitle{
+  font-size: 26px;
+  color:#f2f2f2;
+}
+
+/* info */
+
+.info{
+  text-align: center;
+  padding: 80px 20px;
+  background:url("images/hatter.png");
+}
+
+.info h1{
+  color:#d40000;
+  font-size: 40px;
+}
+
+.info-subtitle{
+    font-size: 26px;
+  color:#f2f2f2;
+  width: 550px;        
+  margin: 0 auto;     
+  text-align: left; 
+  line-height: 2;
+}
+
+/* RESERV */
+
+.reserv{
+  background-image:linear-gradient(to right,#3b0100,#b60000, #3b0100);
+  text-align:center;
+  padding:15px;
+}
+
+.reserv-button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 20px
+}
+
+.reserv-btn{
+  background:black;
+  color:white;
+  padding:14px 24px;
+  border-radius:30px;
+  text-decoration:none;
+  font-weight:bold;
+  display: inline-block;
+  transition: all 0.25s ease;
+}
+
+.reserv-btn:hover{
+  background: #222121;
+  transform: scale(1.1);
+}
+
+/* MINI PIC */
+
+.minipic{
+  background-image:url("images/hatter.png");
+  padding: 40px;
+}
+
+/* Star */
+
+.star{
+    color:#d40000;
+    font-size:150%;
+}
+
+                                                 /* ANGI */
+/* INFORM */
+.inform{
+  background: url("images/szuletesnap_hatter1.png");
+  padding:40px 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.inform-test{
+  max-width: 950px;
+  margin: 0 auto;
+   text-align: center;
+   font-weight: bold;
+   font-size:26px;
+   
+}
+.inform-h1{
+   
+    color:black;
+    font-size: 40px;
+}
+.inform-h2{
+    font-size: 35px;
+}
+
+/* CSOMAG */
+.csomag{
+  background: url("images/hatter.png");
+  padding:40px 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.csomag-test{
+  max-width: 950px;
+  margin: 0 auto;
+   text-align: center;
+    font-size:26px;
+    
+}
+.csomag-h1{
+   
+    color:#d40000;
+      font-size: 40px;
+}
+
+.csomag-h3{
+    font-weight: bolder;
+    text-align: left;
+    width: 850px;
+     margin: 0 auto;
+      line-height: 3;
+      text-transform: uppercase;
+    
+}
+.csomag-szoveg{
+    width: 750px;
+  margin: 0 auto;
+  text-align: left; 
+}
+.csomag-ar{
+    text-transform: uppercase;
+    text-align:center
+}
+/* ELERHETOSEG*/
+.elerhetoseg{
+  background: url("images/hatter.png");
+  padding:40px 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+   min-height: 100vh;
+    overflow: hidden;
+}
+
+.elerhetoseg-test{
+  max-width: 950px;
+  margin: 0 auto;
+   text-align: center;
+   font-weight: bold;
+   font-size:26px;
+}
+.elerhetoseg-h1{
+   
+    color:#d40000;
+      font-size: 40px;
+}
+.elerhetoseg-belso{
+   display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+  margin-top: 30px;
+}
+.elerhetoseg-bal{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  text-align: left;
+}
+.elerhetoseg-jobb{
+    flex: 1;
+}
+.elerhetoseg-emoji{
+   color: #d40000;
+    font-size: 30px; 
+    width: 35px;
+    text-align: center;
+}
+.elerhetoseg-igazitas{
+  display: flex;
+    align-items: center;
+    gap: 15px; 
+    margin-bottom: 20px;
+}
+.elerhetoseg-igazitas p {
+    margin: 0;
+}
+                            /* Fanni 2.0 */
+
+/* RED-BUTTONS */
+
+.red-button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 20px
+}
+
+.red-btn{
+  background:#d40000;
+  color:white;
+  padding:14px 24px;
+  border-radius:30px;
+  text-decoration:none;
+  font-weight:bold;
+  display: inline-block;
+  transition: all 0.25s ease;
+}
+
+.red-btn:hover{
+  background: #700505;
+  transform: scale(1.1);
+}
+
+
+/* basics2 */
+
+.basics2{
+  text-align: center;
+  padding: 200px 300px;
+  background: url("images/hatter.png");
+}
+
+.basics2 h1{
+  color:#d40000;
+  font-size: 40px;
+}
+
+.basics2-subtitle{
+  font-size: 26px;
+  color:#f2f2f2;
+}
+
+.basicform {
+  display:none; 
+  max-width:600px; 
+  margin:30px auto 0; 
+  background:transparent; 
+  padding:25px; 
+  border-radius:16px; 
+  box-shadow:0 4px 12px rgba(0,0,0,0.2);
+}
+
+.formtitle {
+  text-align:center; 
+  margin-bottom:20px; 
+  color: #d40000;
+  }
+
+.backpic {
+  background:url("images/hatter.png");
+  width: 100%;
+  height: 200%;
+  }
+
+tr td:first-child,
+tr th:first-child {
+  border-color: black;
+}
+
+tr:first-child th,
+tr:first-child td {
+  border-color: black;
+}
+
+.szabad {
+  width: 10px;
+}
+
+.backpic2 {
+  background:url("images/hatter2.png");
+  width: 100%;
+  height: 200%;
+  }
+
+            /* Betti INF-22-23 */
+
+/* Szobák */
+.rooms-hero{
+  background: url("images/hatter.png") center/cover no-repeat;
+  padding: 55px 0 35px;
+}
+
+.rooms-hero-container{
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 40px;
+  text-align: center;
+  color: white;
+}
+
+.rooms-hero h1{
+  margin: 0 0 26px 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 54px;
+  line-height: 1.1;
+  color: white;
+  font-weight: bold;
+}
+
+.hero-features{
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 80px;
+  flex-wrap: wrap;
+}
+
+.feature-card{
+  width: 290px;
+  text-align: center;
+}
+
+.feature-icon{
+  font-size: 56px;
+  color: #d40000;
+  margin-bottom: 10px;
+  line-height: 1;
+}
+
+.feature-icon i{
+  font-size: 50px;
+  color: #d40000;
+  margin-bottom: 10px;
+}
+
+.feature-card h2{
+  margin: 0 0 14px 0;
+  color: #d40000;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 26px;
+  line-height: 1.05;
+  font-weight: 900;
+  letter-spacing: 0.5px;
+}
+
+.feature-card p{
+  margin: 0;
+  color: white;
+  font-size: 20px;
+  line-height: 1.45;
+  font-weight: 600;
+}
+
+.rooms-title-bar{
+  background: linear-gradient(to right, #5c0000, #d50000, #5c0000);
+  text-align: center;
+  padding: 22px 20px;
+}
+
+.rooms-title-bar h2{
+  margin: 0;
+  color: black;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 88px;
+  line-height: 1;
+  font-weight: bold;
+}
+
+.rooms-grid-section{
+  background: black;
+  padding: 48px 20px 60px;
+}
+
+.rooms-grid{
+  max-width: 1300px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 85px;
+  flex-wrap: wrap;
+}
+
+.room-card{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.room-card img{
+  width: 260px;
+  height: 170px;
+  object-fit: cover;
+  display: block;
+  margin-bottom: 16px;
+}
+
+.room-btn{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 285px;
+  min-height: 92px;
+  padding: 10px 24px;
+  background: #d40000;
+  color: white;
+  text-decoration: none;
+  border-radius: 999px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 30px;
+  font-weight: bold;
+  line-height: 1.15;
+  text-align: center;
+  transition: all 0.25s ease;
+}
+
+.room-btn:hover{
+  background: #700505;
+  transform: scale(1.08);
+}
+
+.info-section{
+  background: url("images/hatter.png") center/cover no-repeat;
+  padding: 18px 0 26px;
+}
+
+.prices-container{
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+  text-align: center;
+  color: white;
+}
+
+.prices-container h2{
+  margin: 0 0 2px 0;
+  color: #d40000;
+  font-size: 74px;
+  line-height: 1;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 900;
+  letter-spacing: 1px;
+}
+
+.prices-container h3{
+  margin: 0 0 22px 0;
+  color: white;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 24px;
+  line-height: 1.2;
+  font-weight: normal;
+}
+
+.prices-container p{
+  margin: 0 0 22px 0;
+  color: white;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 20px;
+  line-height: 1.55;
+}
+
+.price-box{
+  margin: 22px 0 28px;
+}
+
+.price-box h4{
+  margin: 0 0 10px 0;
+  color: #d40000;
+  font-size: 34px;
+  line-height: 1.1;
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: bold;
+  text-align: left;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.price-value{
+  color: white;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 54px;
+  line-height: 1.1;
+  font-weight: normal;
+}
+
+.opening-section{
+  background: url("images/hatter2.png") center/cover no-repeat;
+  padding: 10px 0 55px;
+}
+
+.opening-container{
+  max-width: 650px;
+  margin: 0 auto;
+  text-align: center;
+  color: white;
+}
+
+.opening-container h2{
+  margin: 0 0 18px 0;
+  color: #d40000;
+  font-size: 72px;
+  line-height: 1;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 900;
+  letter-spacing: 1px;
+}
+
+.opening-table{
+  max-width: 380px;
+  margin: 0 auto;
+}
+
+.opening-row{
+  display: flex;
+  justify-content: space-between;
+  color: white;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 23px;
+  line-height: 1.7;
+}
+
+.fo-tartalom{
+    background-image: url('hatter.png');
+    background-size: cover;
+    background-position: center;
+    padding: 50px 80px;
+    min-height: 100vh;
+}
+
+.fo-tartalom h1{
+    text-align: center;
+    color: #d40000;
+    font-size: 56px;
+    margin-bottom: 40px;
+    font-family: Georgia, serif;
+}
+
+.szoveg{
+    max-width: 1100px;
+    margin: 0 auto;
+    font-size: 24px;
+    line-height: 1.5;
+}
+
+.szoveg p{
+    margin-bottom: 35px;
+}
+
+/*                 Betti                 */
+
+.team-section{
+  background:url("images/hatter.png") center/cover no-repeat;
+  padding:80px 10%;
+  color:white;
+}
+
+.team-section h1{
+  text-align:center;
+  color:#d40000;
+  font-size:60px;
+}
+
+.team-section h3{
+  text-align:center;
+  margin-bottom:50px;
+  font-size: 45px;
+}
+
+.team-top-section{
+    background: url("images/hatter.png") center/cover no-repeat;
+    padding: 50px 0 70px;
+}
+
+.team-top-container{
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 40px;
+    color: white;
+}
+
+.team-top-container h1{
+    text-align: center;
+    color: #d40000;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 74px;
+    margin: 0 0 10px 0;
+    line-height: 1;
+}
+
+.team-top-container h2{
+    text-align: center;
+    color: white;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 34px;
+    font-weight: normal;
+    margin: 0 0 50px 0;
+    line-height: 1.2;
+}
+
+.team-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 45px 70px;
+    align-items: center;
+}
+
+.team-block{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.text-block{
+    justify-content: flex-start;
+}
+
+.team-grid > :nth-child(2) img{
+    width: 200px;
+}
+
+.team-grid > :nth-child(6) img{
+    width: 400px;
+}
+
+.team-grid > :nth-child(3) i{
+    font-size: 280px;
+}
+
+.team-grid > :nth-child(7) i{
+    font-size: 250px;
+}
+
+.text-block p{
+    margin: 0;
+    color: white;
+    font-size: 24px;
+    line-height: 1.45;
+    max-width: 560px;
+    text-align: left;
+}
+
+.image-block img{
+    display: block;
+    width: 250px;
+    height: auto;
+    object-fit: cover;
+}
+
+.icon-block{
+    justify-content: center;
+}
+
+.icon-block i{
+    font-size: 180px;
+    color: #d40000;
+    line-height: 1;
+}
+
+.cta-section2{
+  text-align:center;
+  padding:40px;
+  background:linear-gradient(to right, #3b0100,#b60000, #3b0100);
+}
+
+.cta-btn2{
+  padding:30px 70px;
+  border:none;
+  border-radius:75px;
+  background:black;
+  color:white;
+  font-size:40px;
+  cursor:pointer;
+  transition: all 0.25s ease;
+}
+
+.cta-btn2:hover{
+  background: #222121;
+  transform: scale(1.1);
+}
+
+.info-section{
+  background:url("images/hatter.png") center/cover no-repeat;
+  padding:80px 10%;
+  text-align:center;
+  color:white;
+  font-size: 23px;
+}
+
+.info-section h2{
+  color:#d40000;
+  margin-bottom:30px;
+  font-size: 50px;
+}
+
+.highlight{
+  color:#d40000;
+  font-weight:bold;
+  font-size: 30px;
+}
+
+.form-section{
+  background: url("images/hatter3.png") center/cover no-repeat;
+  padding: 100px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-section h2{
+  color: #d40000;
+  font-size: 60px;
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+#contactForm{
+  width: 900px;
+}
+
+.form-row{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 25px;
+}
+
+.form-row label{
+  width: 250px;
+  font-size: 36px;
+  color: white;
+  font-family: Georgia, serif;
+}
+
+.form-row input,
+.form-row select{
+  width: 550px;
+  height: 55px;
+  border-radius: 40px;
+  border: none;
+  padding: 0 24px;
+  font-size: 18px;
+  background: #ddd;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.form-row select{
+  line-height: 55px;
+  background-image: none;
+}
+
+.submit-row{
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.submit-btn{
+  margin-top: 40px;
+  width: 400px;
+  height: 60px;
+  border-radius: 40px;
+  border: none;
+  background: #d40000;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.submit-btn:hover{
+  transform: scale(1.05);
+  background: #700505;
+}
+
+.hidden{
+  display: none;
 }
