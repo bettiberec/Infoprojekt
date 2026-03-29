@@ -1031,7 +1031,7 @@ tr:first-child td {
 
 .fo-tartalom h1{
     text-align: center;
-    color: red;
+    color: #d40000;
     font-size: 56px;
     margin-bottom: 40px;
     font-family: Georgia, serif;
@@ -1046,4 +1046,237 @@ tr:first-child td {
 
 .szoveg p{
     margin-bottom: 35px;
+}
+
+/*                 Betti                 */
+
+.team-section{
+  background:url("images/hatter.png") center/cover no-repeat;
+  padding:80px 10%;
+  color:white;
+}
+
+.team-section h1{
+  text-align:center;
+  color:#d40000;
+  font-size:60px;
+}
+
+.team-section h3{
+  text-align:center;
+  margin-bottom:50px;
+  font-size: 45px;
+}
+
+.team-top-section{
+    background: url("images/hatter.png") center/cover no-repeat;
+    padding: 50px 0 70px;
+}
+
+.team-top-container{
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 40px;
+    color: white;
+}
+
+.team-top-container h1{
+    text-align: center;
+    color: #d40000;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 74px;
+    margin: 0 0 10px 0;
+    line-height: 1;
+}
+
+.team-top-container h2{
+    text-align: center;
+    color: white;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 34px;
+    font-weight: normal;
+    margin: 0 0 50px 0;
+    line-height: 1.2;
+}
+
+.team-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 45px 70px;
+    align-items: center;
+}
+
+.team-block{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.text-block{
+    justify-content: flex-start;
+}
+
+.team-grid > :nth-child(2) img{
+    width: 200px;
+}
+
+.team-grid > :nth-child(6) img{
+    width: 400px;
+}
+
+.team-grid > :nth-child(3) i{
+    font-size: 280px;
+}
+
+.team-grid > :nth-child(7) i{
+    font-size: 250px;
+}
+
+.text-block p{
+    margin: 0;
+    color: white;
+    font-size: 24px;
+    line-height: 1.45;
+    max-width: 560px;
+    text-align: left;
+}
+
+.image-block img{
+    display: block;
+    width: 250px;
+    height: auto;
+    object-fit: cover;
+}
+
+.icon-block{
+    justify-content: center;
+}
+
+.icon-block i{
+    font-size: 180px;
+    color: #d40000;
+    line-height: 1;
+}
+
+.cta-section2{
+  text-align:center;
+  padding:40px;
+  background:linear-gradient(to right, #3b0100,#b60000, #3b0100);
+}
+
+.cta-btn2{
+  padding:30px 70px;
+  border:none;
+  border-radius:75px;
+  background:black;
+  color:white;
+  font-size:40px;
+  cursor:pointer;
+  transition: all 0.25s ease;
+}
+
+.cta-btn2:hover{
+  background: #222121;
+  transform: scale(1.1);
+}
+
+.info-section{
+  background:url("images/hatter.png") center/cover no-repeat;
+  padding:80px 10%;
+  text-align:center;
+  color:white;
+  font-size: 23px;
+}
+
+.info-section h2{
+  color:#d40000;
+  margin-bottom:30px;
+  font-size: 50px;
+}
+
+.highlight{
+  color:#d40000;
+  font-weight:bold;
+  font-size: 30px;
+}
+
+.form-section{
+  background: url("images/hatter3.png") center/cover no-repeat;
+  padding: 100px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-section h2{
+  color: #d40000;
+  font-size: 60px;
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+#contactForm{
+  width: 900px;
+}
+
+.form-row{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 25px;
+}
+
+.form-row label{
+  width: 250px;
+  font-size: 36px;
+  color: white;
+  font-family: Georgia, serif;
+}
+
+.form-row input,
+.form-row select{
+  width: 550px;
+  height: 55px;
+  border-radius: 40px;
+  border: none;
+  padding: 0 24px;
+  font-size: 18px;
+  background: #ddd;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.form-row select{
+  line-height: 55px;
+  background-image: none;
+}
+
+.submit-row{
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.submit-btn{
+  margin-top: 40px;
+  width: 400px;
+  height: 60px;
+  border-radius: 40px;
+  border: none;
+  background: #d40000;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.submit-btn:hover{
+  transform: scale(1.05);
+  background: #700505;
+}
+
+.hidden{
+  display: none;
 }
