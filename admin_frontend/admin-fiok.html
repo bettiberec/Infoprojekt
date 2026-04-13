@@ -49,17 +49,17 @@
 
         <div class="form-row">
             <label for="name">Név:</label>
-            <input type="text" id="name" name="name">
+            <input type="text" id="name" name="name" readonly value="Teszt Elek">
         </div>
 
         <div class="form-row">
             <label for="email">E-mail:</label>
-            <input type="email" id="email" name="email">
+            <input type="email" id="email" name="email" readonly value="admin@escape.hu">
         </div>
 
         <div class="form-row">
             <label for="phone">Telefon:</label>
-            <input type="text" id="phone" name="phone">
+            <input type="text" id="phone" name="phone" readonly value="06 30 333 4444">
         </div>
 
         <div class="button-row">
@@ -75,9 +75,18 @@
     <div class="modal-content">
         <h2>Jelszó Módosítása</h2>
 
-        <input type="password" placeholder="Régi jelszó">
-        <input type="password" placeholder="Új jelszó">
-        <input type="password" placeholder="Új jelszó megint">
+        <div class="form-row">
+            <input style="background-color: white;" type="password" id="password" placeholder="Régi jelszó">
+        </div>
+        <div class="form-row">
+            <input style="background-color: white;" type="password" id="password-new" placeholder="Új jelszó">
+        </div>
+        <div class="form-row">
+            <input style="background-color: white;" type="password" id="password-new-again" placeholder="Új jelszó megint">
+        </div>
+
+      
+        <input type="checkbox" onclick="showPassword()">Jelszó mutatása
 
         <div class="modal-buttons">
             <button class="ok-btn">Rendben</button>
@@ -93,17 +102,17 @@
 
         <div class="form-row">
             <label>Név:</label>
-            <input type="text">
+            <input style="background-color: white;" type="text">
         </div>
 
         <div class="form-row">
             <label>E-mail:</label>
-            <input type="email">
+            <input style="background-color: white;" type="email">
         </div>
 
         <div class="form-row">
             <label>Telefon:</label>
-            <input type="text">
+            <input style="background-color: white;" type="text">
         </div>
 
         <div class="modal-buttons">
@@ -159,6 +168,29 @@
     }
     function closeEditModal(){
       document.getElementById("editModal").style.display = "none";
+    }
+
+
+    function showPassword() {
+        var x = document.getElementById("password");
+        var y = document.getElementById("password-new");
+        var z = document.getElementById("password-new-again");
+        
+          if (x.type === "password") {
+              x.type = "text";
+          } else {
+              x.type = "password";
+          }
+          if (y.type === "password") {
+              y.type = "text";
+          } else {
+              y.type = "password";
+          }
+          if (z.type === "password") {
+              z.type = "text";
+          } else {
+              z.type = "password";
+          }
     }
   </script>
 </body>

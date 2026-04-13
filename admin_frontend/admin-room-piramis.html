@@ -7,6 +7,7 @@
 </head>
 
 <body>
+ <!------------------------------NAVBAR---------------------------->
   <div class="main-container">
     <nav class="navbar">
       <div class="main-logo">
@@ -22,7 +23,7 @@
           </button>
 
           <div class="dropdown" id="roomsMenu">
-            <a class="dropdown-link" href="admin-room-borton.html">Börtön</a>
+            <a class="dropdown-link" href="admin-room-borton.html" >Börtön</a>
             <a class="dropdown-link" href="admin-room-piramis.html" style="background: #4f83ff;">Piramis</a>
             <a class="dropdown-link" href="admin-room-titkosugynok.html">Ügynök</a>
           </div>
@@ -39,9 +40,184 @@
       </div>
     </nav>
   </div>
-<!---------------------------Script--------------------------->
-  <script>
-    //Ez a NAVBAR. Ne módosítsd!
+
+  <!------------------------------Admin szoba táblázat---------------------------->
+  <section class="admin-room-page">
+    <h1 class="admin-room-title">Elveszett piramis - Admin</h1>
+    
+
+<div class="admin-calendar-container">
+
+  <div class="admin-week-navigation-wrapper">
+    <span id="prevWeekBtn" class="admin-week-arrow">⬅</span>
+
+    <div id="weekLabel" class="admin-week-label"></div>
+
+    <span id="nextWeekBtn" class="admin-week-arrow">➡</span>
+  </div>
+
+  <div class="admin-table-wrapper">
+    <table class="admin-booking-table" id="adminBookingTable"></table>
+  </div>
+
+</div>
+  
+
+       <div class="admin-center-block">
+    <div id="weekLabel" class="admin-week-label"></div>
+
+<div class="admin-table-wrapper">
+  <table class="admin-booking-table" id="adminBookingTable"></table>
+</div>
+
+
+
+
+    <div id="selectedSlotInfo" class="admin-selected-slot"></div>
+  </section>
+
+  <div id="adminBookingAction" style="text-align:center; margin-top:20px; display:none;">
+    <button id="openAdminBookingFormBtn" class="admin-btn" style="max-width:320px; margin:0 auto;">
+        Foglalás létrehozása
+    </button>
+</div>
+
+<!------------------------------Admin foglalás form---------------------------->
+<div id="adminBookingFormContainer" style="display:none; max-width:650px; margin:30px auto 0; background:white; padding:25px; border-radius:16px; box-shadow:0 4px 12px rgba(0,0,0,0.2);">
+  <h2 style="text-align:center; margin-bottom:20px;">Admin foglalás</h2>
+
+  <form id="adminBookingForm">
+    <div class="form-group">
+      <label for="adminName" class="required">Név</label>
+      <input type="text" id="adminName" required>
+    </div>
+
+    <div class="form-group">
+      <label for="adminEmail" class="required">Email</label>
+      <input type="email" id="adminEmail" required>
+    </div>
+
+    <div class="form-group">
+      <label for="adminPhone" class="required">Telefonszám</label>
+      <input type="tel" id="adminPhone" required>
+    </div>
+
+    <div class="form-group">
+      <label for="adminGuests" class="required">Létszám</label>
+      <select id="adminGuests" required>
+        <option value="">Válassz létszámot</option>
+        <option value="2">2 fő</option>
+        <option value="3">3 fő</option>
+        <option value="4">4 fő</option>
+        <option value="5">5 fő</option>
+        <option value="6">6 fő</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="adminNote">Megjegyzés</label>
+      <textarea id="adminNote" rows="4" style="width:100%; padding:12px; box-sizing:border-box;"></textarea>
+    </div>
+
+    <div class="form-group">
+      <div class="checkbox-row">
+        <input type="checkbox" id="adminBirthday">
+        <label for="adminBirthday">Születésnap</label>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="adminPaymentMethod" class="required">Fizetési mód</label>
+      <select id="adminPaymentMethod" required>
+        <option value="">Válassz fizetési módot</option>
+        <option value="cash">Készpénz</option>
+        <option value="card">Kártya</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Végösszeg</label>
+      <input type="text" id="adminPrice" readonly>
+    </div>
+
+    <button type="submit" class="admin-btn">Foglalás mentése</button>
+  </form>
+</div>
+
+<!------------------------------Részletes nézet---------------------------->
+<div id="bookingDetailsModalOverlay" class="admin-modal-overlay">
+  <div class="admin-modal">
+    <div class="admin-modal-header">
+      <h2>Foglalás részletei</h2>
+      <button id="closeBookingDetailsModal" class="admin-close-btn">&times;</button>
+    </div>
+
+    <form id="bookingDetailsForm">
+      <div class="form-group">
+        <label for="detailsName" class="required">Név</label>
+        <input type="text" id="detailsName" required>
+      </div>
+
+      <div class="form-group">
+        <label for="detailsEmail" class="required">Email</label>
+        <input type="email" id="detailsEmail" required>
+      </div>
+
+      <div class="form-group">
+        <label for="detailsPhone" class="required">Telefonszám</label>
+        <input type="tel" id="detailsPhone" required>
+      </div>
+
+      <div class="form-group">
+        <label for="detailsGuests" class="required">Létszám</label>
+        <select id="detailsGuests" required>
+          <option value="">Válassz létszámot</option>
+          <option value="2">2 fő</option>
+          <option value="3">3 fő</option>
+          <option value="4">4 fő</option>
+          <option value="5">5 fő</option>
+          <option value="6">6 fő</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="detailsNote">Megjegyzés</label>
+        <textarea id="detailsNote" rows="4" style="width:100%; padding:12px; box-sizing:border-box;"></textarea>
+      </div>
+
+      <div class="form-group">
+        <div class="checkbox-row">
+          <input type="checkbox" id="detailsBirthday">
+          <label for="detailsBirthday">Születésnap</label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="detailsPaymentMethod" class="required">Fizetési mód</label>
+        <select id="detailsPaymentMethod" required>
+          <option value="">Válassz fizetési módot</option>
+          <option value="cash">Készpénz</option>
+          <option value="card">Kártya</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="detailsPrice">Végösszeg</label>
+        <input type="text" id="detailsPrice" readonly>
+      </div>
+
+      <div class="admin-modal-actions">
+        <button type="submit" class="admin-btn">Módosítás mentése</button>
+        <button type="button" id="deleteBookingBtn" class="admin-delete-btn">Törlés</button>
+        <button type="button" id="cancelBookingDetailsBtn" class="admin-secondary-btn">Bezárás</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!------------------------------Script---------------------------->
+<script>
+  //Ez a NAVBAR. Ne módosítsd!
     const roomsBtn = document.getElementById("roomsBtn");
     const roomsMenu = document.getElementById("roomsMenu");
     const logoutBtn = document.getElementById("kijelentkezes");
@@ -68,6 +244,465 @@
       }
     });
     //Itt ér véget a navbar!
-  </script>
+
+  //Változók beállítása
+  const roomId = "elveszett_piramis";
+  const timeSlots = ["09:00", "10:30", "12:00", "13:30", "15:00", "16:30", "18:00", "19:30", "21:00"];
+  const dayNames = ["Hétfő", "Kedd", "Szerda", "Csütörtök", "Péntek", "Szombat", "Vasárnap"];
+  const bookingTable = document.getElementById("adminBookingTable");
+  const prevWeekBtn = document.getElementById("prevWeekBtn");
+  const nextWeekBtn = document.getElementById("nextWeekBtn");
+  const selectedSlotInfo = document.getElementById("selectedSlotInfo");
+  const today = new Date();
+  let currentWeekOffset = 0;
+  const maxWeekOffset = 4;
+  const adminBookingAction = document.getElementById("adminBookingAction");
+  const openAdminBookingFormBtn = document.getElementById("openAdminBookingFormBtn");
+  const adminBookingFormContainer = document.getElementById("adminBookingFormContainer");
+  const adminBookingForm = document.getElementById("adminBookingForm");
+  const adminGuests = document.getElementById("adminGuests");
+  const adminBirthday = document.getElementById("adminBirthday");
+  const adminPrice = document.getElementById("adminPrice");
+  let selectedDate = null;
+  let selectedTime = null;
+  const bookingDetailsModalOverlay = document.getElementById("bookingDetailsModalOverlay");
+  const closeBookingDetailsModal = document.getElementById("closeBookingDetailsModal");
+  const cancelBookingDetailsBtn = document.getElementById("cancelBookingDetailsBtn");
+  const deleteBookingBtn = document.getElementById("deleteBookingBtn");
+  const bookingDetailsForm = document.getElementById("bookingDetailsForm");
+  const detailsName = document.getElementById("detailsName");
+  const detailsEmail = document.getElementById("detailsEmail");
+  const detailsPhone = document.getElementById("detailsPhone");
+  const detailsGuests = document.getElementById("detailsGuests");
+  const detailsNote = document.getElementById("detailsNote");
+  const detailsBirthday = document.getElementById("detailsBirthday");
+  const detailsPaymentMethod = document.getElementById("detailsPaymentMethod");
+  const detailsPrice = document.getElementById("detailsPrice");
+  let selectedBookingId = null;
+
+  //Dátum megjelnítési formája
+  function formatDate(date) {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
+    return `${year}-${month}-${day}`;
+  }
+
+  //Fejlécbe rövidített dátumok megjelenítése
+  function formatShortDate(date) {
+    const day = String(date.getDate()).padStart(2, "0");
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    return `${month}/${day}`;
+  }
+
+  //Hétfőt külön le kellett kérdezni, hogy legyen kiindulási alapja a hétnek
+  function getMonday(date) {
+    const d = new Date(date);
+    const day = d.getDay();
+    const diff = day === 0 ? -6 : 1 - day;
+    d.setDate(d.getDate() + diff);
+    d.setHours(0, 0, 0, 0);
+    return d;
+  }
+
+  //A hét többi napja lekérdezés
+  function getWeekDates(offset) {
+    const monday = getMonday(today);
+    monday.setDate(monday.getDate() + offset * 7);
+
+    const dates = [];
+    for (let i = 0; i < 7; i++) {
+      const date = new Date(monday);
+      date.setDate(monday.getDate() + i);
+      dates.push(date);
+    }
+    return dates;
+  }
+
+  //Időpontok lekérdezése
+  async function fetchSlotsForDate(dateString) {
+    const response = await fetch(`http://localhost:3000/api/slots?roomId=${roomId}&date=${dateString}`);
+
+    if (!response.ok) {
+      throw new Error(`API hiba: ${response.status}`);
+    }
+
+    return await response.json();
+  }
+
+  //Nyilak konfigurálása. 4 hétre előre lehet foglalni. Ha nem lehet tovább lapozni akkor button disable.
+  function updateWeekButtons() {
+    if (currentWeekOffset <= 0) {
+      prevWeekBtn.classList.add("disabled");
+    } else {
+      prevWeekBtn.classList.remove("disabled");
+    }
+
+    if (currentWeekOffset >= maxWeekOffset) {
+      nextWeekBtn.classList.add("disabled");
+    } else {
+      nextWeekBtn.classList.remove("disabled");
+    }
+  }
+
+  //Ár beállítása. 4000/fő, szülinap=58.990
+  function updateAdminPrice() {
+    const guests = Number(adminGuests.value);
+    const isBirthday = adminBirthday.checked;
+    if (!guests) {
+      adminPrice.value = "";
+      return;
+    }
+    let price = guests * 4000;
+    if (isBirthday) {
+      price += 58990;
+    }
+    adminPrice.value = `${price.toLocaleString("hu-HU")} Ft`;
+}
+
+//Táblázat renderelése
+  async function renderWeekTable() {
+    try {
+      const weekDates = getWeekDates(currentWeekOffset);
+      const weekLabel = document.getElementById("weekLabel");
+
+        const start = weekDates[0];
+        const end = weekDates[6];
+
+      weekLabel.textContent =
+        `${start.getFullYear()}.${(start.getMonth()+1).toString().padStart(2,"0")}.${start.getDate().toString().padStart(2,"0")} 
+        ${(end.getMonth()+1).toString().padStart(2,"0")}.${end.getDate().toString().padStart(2,"0")}`;
+        weekLabel.textContent = `${formatDate(start)} - ${formatDate(end)}`;
+
+      bookingTable.innerHTML = "";
+      selectedSlotInfo.textContent = "";
+      
+      //Fejléc
+      const headerRow = document.createElement("tr");
+
+      const emptyHeader = document.createElement("th");
+      emptyHeader.textContent = "";
+      headerRow.appendChild(emptyHeader);
+
+      for (let i = 0; i < weekDates.length; i++) {
+        const th = document.createElement("th");
+        th.classList.add("admin-day-header");
+        const shortDays = ["H", "K", "Sze", "Cs", "P", "Szo", "V"];
+       th.innerHTML = 
+        `<div class="admin-date-top">${formatShortDate(weekDates[i])}</div>
+            <div class="admin-day-bottom">${shortDays[i]}</div>`;
+        headerRow.appendChild(th);
+      }
+      bookingTable.appendChild(headerRow);
+
+      //Adatok lekérése a hét minden napjára
+      const weeklyData = {};
+      for (const date of weekDates) {
+        const dateString = formatDate(date);
+        const slotData = await fetchSlotsForDate(dateString);
+        weeklyData[dateString] = slotData.slots;
+      }
+      //Sorok
+      for (const time of timeSlots) {
+        const row = document.createElement("tr");
+
+        const timeCell = document.createElement("td");
+        timeCell.textContent = time;
+        timeCell.classList.add("admin-time-cell");
+        row.appendChild(timeCell);
+
+        for (const date of weekDates) {
+          const dateString = formatDate(date);
+          const daySlots = weeklyData[dateString] || [];
+          const slot = daySlots.find(s => s.time === time);
+
+          const td = document.createElement("td");
+          if (!slot) {
+            td.innerHTML = '<span class="admin-slot-unavailable">—</span>';
+          } else if (slot.available) {
+            const btn = document.createElement("button");
+            btn.textContent = "Szabad";
+            btn.classList.add("admin-slot-btn", "admin-slot-free");
+
+            btn.addEventListener("click", () => {
+              selectedDate = dateString;
+              selectedTime = time;
+
+              selectedSlotInfo.textContent = `Kiválasztott időpont: ${dateString} - ${time}`;
+              adminBookingAction.style.display = "block";
+              adminBookingFormContainer.style.display = "none";
+            });
+            td.appendChild(btn);
+          } else {
+            const btn = document.createElement("button");
+            btn.classList.add("admin-slot-btn");
+            btn.disabled = false;
+
+          if (slot.status === "modified" && slot.bookingType === "birthday") {
+                btn.textContent = "Módosított szülinap";
+                btn.classList.add("admin-slot-modified-birthday");
+
+            } else if (slot.status === "modified") {
+                btn.textContent = "Módosított";
+                btn.classList.add("admin-slot-modified");
+
+            } else if (slot.bookingType === "birthday") {
+                btn.textContent = "Szülinap";
+                btn.classList.add("admin-slot-birthday");
+
+            } else {
+                btn.textContent = "Foglalt";
+                btn.classList.add("admin-slot-booked");
+            }
+            
+            btn.addEventListener("click", () => {
+              openBookingDetailsModal(roomId, dateString, time);
+            });
+            td.appendChild(btn);
+          }
+          row.appendChild(td);
+        }
+        bookingTable.appendChild(row);
+      }
+      updateWeekButtons();
+    } catch (error) {
+      console.error("Hiba az admin heti tábla betöltésekor: ", error);
+    }
+  }
+
+  //Előző hét gombhoz event listener 
+  prevWeekBtn.addEventListener("click", () => {
+    if (currentWeekOffset > 0) {
+      currentWeekOffset--;
+      renderWeekTable();
+    }
+  });
+
+  //Következő hét gombhoz event listener
+  nextWeekBtn.addEventListener("click", () => {
+    if (currentWeekOffset < maxWeekOffset) {
+      currentWeekOffset++;
+      renderWeekTable();
+    }
+  });
+  renderWeekTable();
+
+//////////////////////////////////////////////////////////////////////////////////////////
+//                         Admin Foglalási Form logika                                  //
+/////////////////////////////////////////////////////////////////////////////////////////
+  adminBookingForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const isValid = adminBookingForm.reportValidity();
+    if (!isValid) {
+      return;
+    }
+
+    //Adatok átadása
+    const bookingData = {
+      roomId: roomId,
+      date: selectedDate,
+      time: selectedTime,
+      name: document.getElementById("adminName").value.trim(),
+      email: document.getElementById("adminEmail").value.trim(),
+      phone: document.getElementById("adminPhone").value.trim(),
+      guests: Number(document.getElementById("adminGuests").value),
+      note: document.getElementById("adminNote").value.trim(),
+      bookingType: document.getElementById("adminBirthday").checked ? "birthday" : "normal",
+      paymentMethod: document.getElementById("adminPaymentMethod").value,
+      createdBy: "admin"
+    };
+
+    //API hívás
+    try {
+      const response = await fetch("http://localhost:3000/api/bookings", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(bookingData)
+      });
+
+      const result = await response.json();
+
+      //Visszajelzések
+      if (!response.ok) {
+        alert(result.message || "Hiba történt a foglalás során.");
+        return;
+      }
+
+      alert("Admin foglalás sikeresen mentve!");
+
+      adminBookingForm.reset();
+      adminPrice.value = "";
+      adminBookingFormContainer.style.display = "none";
+      adminBookingAction.style.display = "none";
+      selectedSlotInfo.textContent = "";
+      selectedDate = null;
+      selectedTime = null;
+
+      renderWeekTable();
+    } catch (error) {
+      console.error("Hiba az admin foglaláskor:", error);
+      alert("Nem sikerült elmenteni a foglalást.");
+    }
+  });
+
+  openAdminBookingFormBtn.addEventListener("click", () => {
+    if (selectedDate && selectedTime) {
+      adminBookingFormContainer.style.display = "block";
+
+      adminBookingFormContainer.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+    }
+  });
+
+  adminGuests.addEventListener("change", updateAdminPrice);
+  adminBirthday.addEventListener("change", updateAdminPrice);
+
+  //Ár frissítése Modal nézetben
+  function updateDetailsPrice() {
+  const guests = Number(detailsGuests.value);
+  const isBirthday = detailsBirthday.checked;
+
+  if (!guests) {
+    detailsPrice.value = "";
+    return;
+  }
+
+  let price = guests * 4000;
+  if (isBirthday) {
+    price += 58990;
+  }
+
+  detailsPrice.value = `${price.toLocaleString("hu-HU")} Ft`;
+  }
+
+  detailsGuests.addEventListener("change", updateDetailsPrice);
+  detailsBirthday.addEventListener("change", updateDetailsPrice);
+
+  //Modal megnyitása
+  async function openBookingDetailsModal(roomId, dateString, time) {
+    try {
+      const response = await fetch(
+        `http://localhost:3000/api/bookings/details?roomId=${roomId}&date=${dateString}&time=${time}`
+      );
+
+      const booking = await response.json();
+
+      if (!response.ok) {
+        alert(booking.message || "Nem sikerült lekérni a foglalást.");
+        return;
+      }
+
+      selectedBookingId = booking.id;
+
+      detailsName.value = booking.name || "";
+      detailsEmail.value = booking.email || "";
+      detailsPhone.value = booking.phone || "";
+      detailsGuests.value = booking.guests || "";
+      detailsNote.value = booking.note || "";
+      detailsBirthday.checked = booking.bookingType === "birthday";
+      detailsPaymentMethod.value = booking.paymentMethod || "";
+      updateDetailsPrice();
+
+      bookingDetailsModalOverlay.style.display = "flex";
+  } catch (error) {
+      console.error("Hiba a foglalás részleteinek lekérésekor:", error);
+      alert("Nem sikerült betölteni a foglalás részleteit.");
+    }
+  }
+
+  //Modal bezárása
+  function closeDetailsModal() {
+    bookingDetailsModalOverlay.style.display = "none";
+    bookingDetailsForm.reset();
+    detailsPrice.value = "";
+    selectedBookingId = null;
+  }
+
+  closeBookingDetailsModal.addEventListener("click", closeDetailsModal);
+  cancelBookingDetailsBtn.addEventListener("click", closeDetailsModal);
+
+  bookingDetailsModalOverlay.addEventListener("click", (e) => {
+    if (e.target === bookingDetailsModalOverlay) {
+      closeDetailsModal();
+    }
+  });
+
+  //Foglalás törlése
+  deleteBookingBtn.addEventListener("click", async () => {
+    if (!selectedBookingId) return;
+
+    const confirmed = confirm("Biztosan törölni szeretnéd ezt a foglalást?");
+    if (!confirmed) return;
+
+    try {
+      const response = await fetch(`http://localhost:3000/api/bookings/${selectedBookingId}`, {
+        method: "DELETE"
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        alert(result.message || "Nem sikerült törölni a foglalást.");
+        return;
+      }
+
+      alert("Foglalás törölve.");
+      closeDetailsModal();
+      renderWeekTable();
+    } catch (error) {
+      console.error("Hiba törléskor:", error);
+      alert("Nem sikerült törölni a foglalást.");
+    }
+  });
+
+  //Foglalás módosítása
+  bookingDetailsForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const isValid = bookingDetailsForm.reportValidity();
+    if (!isValid) return;
+
+    if (!selectedBookingId) return;
+
+    const updatedData = {
+      name: detailsName.value.trim(),
+      email: detailsEmail.value.trim(),
+      phone: detailsPhone.value.trim(),
+      guests: Number(detailsGuests.value),
+      note: detailsNote.value.trim(),
+      bookingType: detailsBirthday.checked ? "birthday" : "normal",
+      paymentMethod: detailsPaymentMethod.value
+    };
+
+    //Módosítások menétse JSON-be
+    try {
+      const response = await fetch(`http://localhost:3000/api/bookings/${selectedBookingId}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(updatedData)
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        alert(result.message || "Nem sikerült módosítani a foglalást.");
+        return;
+      }
+      alert("Foglalás módosítva.");
+      closeDetailsModal();
+      renderWeekTable();
+    } catch (error) {
+      console.error("Hiba módosításkor:", error);
+      alert("Nem sikerült módosítani a foglalást.");
+    }
+  });
+</script>
 </body>
 </html>

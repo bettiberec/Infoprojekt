@@ -493,6 +493,10 @@ h1,h2,h3{
   text-align: center;
   padding: 80px 20px;
   background:url("images/hatter.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  
 }
 
 .basics h1{
@@ -511,6 +515,10 @@ h1,h2,h3{
   text-align: center;
   padding: 80px 20px;
   background:url("images/hatter.png");
+    background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  
 }
 
 .info h1{
@@ -565,6 +573,10 @@ h1,h2,h3{
 .minipic{
   background-image:url("images/hatter.png");
   padding: 40px;
+    background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  
 }
 
 /* Star */
@@ -1279,4 +1291,120 @@ tr:first-child td {
 
 .hidden{
   display: none;
+}
+
+/* Betti - INF-33 */
+
+.room-gallery-page{
+  background: url("images/hatter.png") center/cover no-repeat;
+  min-height: 1080px;
+  padding: 60px 20px 90px;
+}
+
+.room-gallery-container{
+  max-width: 1400px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.room-gallery-container h1{
+  margin: 0 0 50px 0;
+  color: #d40000;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 60px;
+  line-height: 1.1;
+  font-weight: bold;
+}
+
+.room-gallery-grid{
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.room-gallery-grid img{
+  width: 340px;
+  height: 340px;
+  object-fit: cover;
+  display: block;
+}
+
+.gallery-page{
+  background: url("images/hatter.png") center/cover no-repeat;
+  min-height: 820px;
+  padding: 70px 20px 100px;
+}
+
+.gallery-page-overlay{
+  width: 100%;
+}
+
+.gallery-page-container{
+  max-width: 1300px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.gallery-page-container h1{
+  margin: 0 0 80px 0;
+  color: #d40000;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 60px;
+  line-height: 1.1;
+  font-weight: bold;
+}
+
+.gallery-buttons-row{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 90px;
+  flex-wrap: wrap;
+  margin-bottom: 80px;
+}
+
+.gallery-bottom-button{
+  display: flex;
+  justify-content: center;
+}
+
+.gallery-room-btn{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 320px;
+  height: 120px;
+  background: #d40000;
+  color: white;
+  text-decoration: none;
+  border-radius: 999px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 30px;
+  font-weight: bold;
+  line-height: 1.2;
+  text-align: center;
+  padding: 10px 20px;
+  box-sizing: border-box;
+  transition: all 0.25s ease;
+}
+
+.gallery-room-btn:hover{
+  background: #700505;
+  color: white;
+  transform: scale(1.08);
+}
+
+/*angi*/
+
+.pic {
+  width: 100%;
+  background: url("images/hatter.png") center/cover no-repeat;
+  display: flex;
+}
+.pic img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+
 }
