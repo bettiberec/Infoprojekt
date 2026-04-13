@@ -23,8 +23,8 @@
           </button>
 
           <div class="dropdown" id="roomsMenu">
-            <a class="dropdown-link" href="admin-room-borton.html" style="background: #4f83ff;">Börtön</a>
-            <a class="dropdown-link" href="admin-room-piramis.html">Piramis</a>
+            <a class="dropdown-link" href="admin-room-borton.html" >Börtön</a>
+            <a class="dropdown-link" href="admin-room-piramis.html" style="background: #4f83ff;">Piramis</a>
             <a class="dropdown-link" href="admin-room-titkosugynok.html">Ügynök</a>
           </div>
         </div>
@@ -369,9 +369,9 @@
         const start = weekDates[0];
         const end = weekDates[6];
 
-weekLabel.textContent =
-  `${start.getFullYear()}.${(start.getMonth()+1).toString().padStart(2,"0")}.${start.getDate().toString().padStart(2,"0")} 
-   ${(end.getMonth()+1).toString().padStart(2,"0")}.${end.getDate().toString().padStart(2,"0")}`;
+      weekLabel.textContent =
+        `${start.getFullYear()}.${(start.getMonth()+1).toString().padStart(2,"0")}.${start.getDate().toString().padStart(2,"0")} 
+        ${(end.getMonth()+1).toString().padStart(2,"0")}.${end.getDate().toString().padStart(2,"0")}`;
         weekLabel.textContent = `${formatDate(start)} - ${formatDate(end)}`;
 
       bookingTable.innerHTML = "";
