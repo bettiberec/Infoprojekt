@@ -160,21 +160,39 @@ body{
   justify-content:center;
   align-items:center;
   gap:18px;
+   width:100%;
+  max-width:900px; 
+  margin-bottom:15px;
 }
 
 .admin-week-arrow{
   font-size:56px;
   font-weight:bold;
   user-select:none;
-  color:#666;
+  color:white;
   cursor:pointer;
   width:60px;
+  height:45px;
   text-align:center;
+  background-color:#5f6f89;
+  padding:0;
+  border-radius:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 }
 
 .admin-week-arrow.disabled{
   color:#a8a8a8;
   cursor:not-allowed;
+  background-color:#5f6f89;
+  width:60px;
+  height:45px;
+  padding:0;
+  border-radius:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 }
 
 .admin-table-wrapper{
@@ -199,8 +217,11 @@ body{
 }
 
 .admin-booking-table th{
-  background-color:#e3c06d;
+  background-color:#5f6f89;
+  color:white;
   padding:4px;
+  text-align:center;
+  vertical-align:middle;
 }
 
 .admin-time-cell{
@@ -644,8 +665,6 @@ h1{
     background:#e3e3e3;
     border-radius:8px;
     font-size:18px;
-    font-weight: bold;
-    font-style: italic;
 }
 
 .modal-buttons{
@@ -702,4 +721,39 @@ h1{
     background:#e3e3e3;
     border-radius:8px;
     font-size:18px;
+}
+/* ANGI foglalások */
+
+.admin-center-block{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+
+.admin-week-label{
+  font-size:22px;
+  font-weight:bold;
+  margin-bottom:10px;
+}
+
+.admin-calendar-container{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+.admin-slot-modified-birthday{
+  background-color:#ff9a02; 
+  color:white;
+  cursor:pointer;
+}
+
+.admin-date-top{
+  font-size:18px;
+  font-weight:bold;
+}
+
+.admin-day-bottom{
+  font-size:16px;
+  margin-top:4px;
+  opacity:0.9;
 }

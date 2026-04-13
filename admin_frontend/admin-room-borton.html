@@ -43,16 +43,34 @@
   <!------------------------------Admin szoba táblázat---------------------------->
   <section class="admin-room-page">
     <h1 class="admin-room-title">Börtönszökés - Admin</h1>
+    
 
-    <div class="admin-week-navigation-wrapper">
-      <span id="prevWeekBtn" class="admin-week-arrow">⬅</span>
+<div class="admin-calendar-container">
 
-      <div class="admin-table-wrapper">
-        <table class="admin-booking-table" id="adminBookingTable"></table>
-      </div>
+  <div class="admin-week-navigation-wrapper">
+    <span id="prevWeekBtn" class="admin-week-arrow">⬅</span>
 
-      <span id="nextWeekBtn" class="admin-week-arrow">➡</span>
-    </div>
+    <div id="weekLabel" class="admin-week-label"></div>
+
+    <span id="nextWeekBtn" class="admin-week-arrow">➡</span>
+  </div>
+
+  <div class="admin-table-wrapper">
+    <table class="admin-booking-table" id="adminBookingTable"></table>
+  </div>
+
+</div>
+  
+
+       <div class="admin-center-block">
+    <div id="weekLabel" class="admin-week-label"></div>
+
+<div class="admin-table-wrapper">
+  <table class="admin-booking-table" id="adminBookingTable"></table>
+</div>
+
+
+
 
     <div id="selectedSlotInfo" class="admin-selected-slot"></div>
   </section>
@@ -345,6 +363,16 @@
   async function renderWeekTable() {
     try {
       const weekDates = getWeekDates(currentWeekOffset);
+      const weekLabel = document.getElementById("weekLabel");
+
+        const start = weekDates[0];
+        const end = weekDates[6];
+
+weekLabel.textContent =
+  `${start.getFullYear()}.${(start.getMonth()+1).toString().padStart(2,"0")}.${start.getDate().toString().padStart(2,"0")} 
+   ${(end.getMonth()+1).toString().padStart(2,"0")}.${end.getDate().toString().padStart(2,"0")}`;
+        weekLabel.textContent = `${formatDate(start)} - ${formatDate(end)}`;
+
       bookingTable.innerHTML = "";
       selectedSlotInfo.textContent = "";
       
@@ -358,7 +386,10 @@
       for (let i = 0; i < weekDates.length; i++) {
         const th = document.createElement("th");
         th.classList.add("admin-day-header");
-        th.innerHTML = `${dayNames[i]}<span class="admin-day-date">${formatShortDate(weekDates[i])}</span>`;
+        const shortDays = ["H", "K", "Sze", "Cs", "P", "Szo", "V"];
+       th.innerHTML = 
+        `<div class="admin-date-top">${formatShortDate(weekDates[i])}</div>
+            <div class="admin-day-bottom">${shortDays[i]}</div>`;
         headerRow.appendChild(th);
       }
       bookingTable.appendChild(headerRow);
@@ -406,16 +437,23 @@
             btn.classList.add("admin-slot-btn");
             btn.disabled = false;
 
-            if (slot.status === "modified") {
-              btn.textContent = "Módosított";
-              btn.classList.add("admin-slot-modified");
+          if (slot.status === "modified" && slot.bookingType === "birthday") {
+                btn.textContent = "Módosított szülinap";
+                btn.classList.add("admin-slot-modified-birthday");
+
+            } else if (slot.status === "modified") {
+                btn.textContent = "Módosított";
+                btn.classList.add("admin-slot-modified");
+
             } else if (slot.bookingType === "birthday") {
-              btn.textContent = "Szülinap";
-              btn.classList.add("admin-slot-birthday");
+                btn.textContent = "Szülinap";
+                btn.classList.add("admin-slot-birthday");
+
             } else {
-              btn.textContent = "Foglalt";
-              btn.classList.add("admin-slot-booked");
+                btn.textContent = "Foglalt";
+                btn.classList.add("admin-slot-booked");
             }
+            
             btn.addEventListener("click", () => {
               openBookingDetailsModal(roomId, dateString, time);
             });

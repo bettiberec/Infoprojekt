@@ -493,6 +493,10 @@ h1,h2,h3{
   text-align: center;
   padding: 80px 20px;
   background:url("images/hatter.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  
 }
 
 .basics h1{
@@ -511,6 +515,10 @@ h1,h2,h3{
   text-align: center;
   padding: 80px 20px;
   background:url("images/hatter.png");
+    background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  
 }
 
 .info h1{
@@ -565,6 +573,10 @@ h1,h2,h3{
 .minipic{
   background-image:url("images/hatter.png");
   padding: 40px;
+    background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  
 }
 
 /* Star */
@@ -1381,4 +1393,17 @@ tr:first-child td {
   background: #700505;
   color: white;
   transform: scale(1.08);
+
+/*angi*/
+
+.pic {
+  width: 100%;
+  background: url("images/hatter.png") center/cover no-repeat;
+  display: flex;
+}
+.pic img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+
 }
