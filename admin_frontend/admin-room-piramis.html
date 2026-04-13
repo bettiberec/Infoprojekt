@@ -345,7 +345,7 @@
     }
   }
 
-  //Ár beállítása. 6000/fő, szülinap= alap ár+20.000
+  //Ár beállítása. 4000/fő, szülinap=58.990
   function updateAdminPrice() {
     const guests = Number(adminGuests.value);
     const isBirthday = adminBirthday.checked;
@@ -353,9 +353,9 @@
       adminPrice.value = "";
       return;
     }
-    let price = guests * 6000;
+    let price = guests * 4000;
     if (isBirthday) {
-      price += 20000;
+      price += 58990;
     }
     adminPrice.value = `${price.toLocaleString("hu-HU")} Ft`;
 }
@@ -572,9 +572,9 @@ weekLabel.textContent =
     return;
   }
 
-  let price = guests * 6000;
+  let price = guests * 4000;
   if (isBirthday) {
-    price += 20000;
+    price += 58990;
   }
 
   detailsPrice.value = `${price.toLocaleString("hu-HU")} Ft`;
