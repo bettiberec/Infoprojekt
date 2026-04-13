@@ -26,3 +26,9 @@
 - Minden Jira tickethez külön branch
 - PR kötelező merge előtt
 - Munkakezdés előtt mindig git pull
+## Emailhez
+- Pullold a lefgrissebb verziót (main és develop)
+- Nyisd meg a backend mappát
+- Jobb click egy üres térre -> Megnyitás a terminálban
+- írd be: npm install
+- Kész :)
