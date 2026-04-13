@@ -1,3 +1,8 @@
+require("dotenv").config();
+
+const { Resend } = require("resend");
+const resend = new Resend(process.env.RESEND_API_KEY);
+
 const express = require("express");
 const fs = require("fs");
 const cors = require("cors");
@@ -85,7 +90,7 @@ app.get("/api/bookings", (req, res) => {
 });
 
 // 3. POST /api/bookings --> időpont lefoglalása
-app.post("/api/bookings", (req, res) => {
+app.post("/api/bookings", async (req, res) => {
   const bookings = readJsonFile(BOOKINGS_FILE);
 
   const roomId = String(req.body.roomId).trim();
@@ -137,6 +142,12 @@ app.post("/api/bookings", (req, res) => {
 
   bookings.push(newBooking);
   writeJsonFile(BOOKINGS_FILE, bookings);
+
+  try {
+    await sendBookingConfirmationEmail(newBooking);
+  } catch (emailError) {
+    console.error("Nem sikerült elküldeni a visszaigazoló emailt:", emailError);
+  }
 
   res.status(201).json({
     message: "Foglalás sikeresen mentve",
@@ -418,3 +429,48 @@ app.get("/api/revenue/finalized-monthly", (req, res) => {
 
   res.json(monthlyRevenues);
 });
+
+//email küldéséhez
+function getRoomDisplayName(roomId) {
+  switch (roomId) {
+    case "bortonbuntetes":
+      return "Börtönbüntetés";
+    case "elveszett_piramis":
+      return "Elveszett piramis";
+    case "titkosugynok_kuldetes":
+      return "A titkosügynök küldetés";
+    default:
+      return roomId;
+  }
+}
+
+async function sendBookingConfirmationEmail(booking) {
+  const roomName = getRoomDisplayName(booking.roomId);
+
+  const { data, error } = await resend.emails.send({
+    from: "Project Escape <onboarding@resend.dev>",
+    to: [booking.email],
+    subject: "Foglalás visszaigazolás - Project Escape",
+    html: `
+      <div style="font-family: Arial, sans-serif; line-height: 1.6;">
+        <h2>Foglalás visszaigazolás</h2>
+        <p>Kedves ${booking.name}!</p>
+        <p>Sikeresen rögzítettük a foglalásodat.</p>
+
+        <p><strong>Szoba:</strong> ${roomName}</p>
+        <p><strong>Dátum:</strong> ${booking.date}</p>
+        <p><strong>Időpont:</strong> ${booking.time}</p>
+        <p><strong>Létszám:</strong> ${booking.guests} fő</p>
+        <p><strong>Megjegyzés:</strong> ${booking.note || "Nincs megadva"}</p>
+        <p><strong>Fizetés:</strong> helyszínen</p>
+
+        <p>Köszönjük a foglalást!</p>
+        <p>Project Escape</p>
+      </div>
+    `
+  });
+  if (error) {
+    throw error;
+  }
+  return data;
+}
