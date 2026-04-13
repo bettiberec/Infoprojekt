@@ -27,8 +27,9 @@
 - PR kötelező merge előtt
 - Munkakezdés előtt mindig git pull
 ## Emailhez
-- Pullold a lefgrissebb verziót (main és develop)
+- Pullold a legfrissebb verziót (main és develop)
 - Nyisd meg a backend mappát
+- Csomagold ki a .ZIP file-t a backendbe (egy .env file van benne)
 - Jobb click egy üres térre -> Megnyitás a terminálban
 - írd be: npm install
 - Kész :)
