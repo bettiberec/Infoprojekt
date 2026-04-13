@@ -40,6 +40,64 @@
     </nav>
   </div>
 
+<section class="revenue-page">
+
+  <div class="revenue-top-buttons">
+    <button id="summaryBtn" class="revenue-tab">Összegzések</button>
+    <button id="monthlyBtn" class="revenue-tab">Havi összegzés</button>
+    <button id="dailyBtn" class="revenue-tab">Napi összegzés</button>
+  </div>
+
+  <div id="summaryPanel" class="revenue-panel hidden-panel">
+    <div class="revenue-card summary-card">
+      <div class="summary-row">
+        <span class="summary-label">Kiválasztott hónap:</span>
+        <select id="summaryMonthSelect" class="summary-select">
+          <option value="">Válassz hónapot</option>
+        </select>
+      </div>
+
+      <div class="summary-lines">
+        <p>Havi összegzés: <span id="summaryMonthlyTotal"></span></p>
+        <p>Készpénz: <span id="summaryCash"></span></p>
+        <p>Bankkártya: <span id="summaryCard"></span></p>
+      </div>
+    </div>
+  </div>
+
+  <div id="monthlyPanel" class="revenue-panel hidden-panel">
+    <div class="revenue-card">
+      <div class="summary-lines">
+        <p>Időszak: <span id="monthlyRange"></span></p>
+        <p>Havi összegzés: <span id="monthlyTotal"></span></p>
+        <p>Készpénz: <span id="monthlyCash"></span></p>
+        <p>Bankkártya: <span id="monthlyCard"></span></p>
+      </div>
+
+      <div class="revenue-buttons two-buttons">
+        <button id="confirmMonthlyBtn" class="ok-btn">Rendben</button>
+        <button id="cancelMonthlyBtn" class="cancel-btn">Mégse</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="dailyPanel" class="revenue-panel hidden-panel">
+    <div class="revenue-card">
+        <div class="summary-lines">
+          <p>Dátum: <span id="dailyDate"></span></p>
+          <p>Napi összegzés: <span id="dailyTotal"></span></p>
+          <p>Készpénz: <span id="dailyCash"></span></p>
+          <p>Bankkártya: <span id="dailyCard"></span></p>
+        </div>
+
+        <div class="revenue-buttons two-buttons">
+          <button id="confirmDailyBtn" class="ok-btn">Rendben</button>
+          <button id="cancelDailyBtn" class="cancel-btn">Mégse</button>
+        </div>
+    </div>
+  </div>
+</section>
+
   <!---------------------------Script--------------------------->
   <script>
     //Ez a NAVBAR. Ne módosítsd!
@@ -69,6 +127,231 @@
       }
     });
     //Itt ér véget a navbar!
+
+    const summaryBtn = document.getElementById("summaryBtn");
+    const monthlyBtn = document.getElementById("monthlyBtn");
+    const dailyBtn = document.getElementById("dailyBtn");
+
+    const summaryPanel = document.getElementById("summaryPanel");
+    const monthlyPanel = document.getElementById("monthlyPanel");
+    const dailyPanel = document.getElementById("dailyPanel");
+
+    const cancelMonthlyBtn = document.getElementById("cancelMonthlyBtn");
+    const cancelDailyBtn = document.getElementById("cancelDailyBtn");
+
+    const dailyDate = document.getElementById("dailyDate");
+    const dailyTotal = document.getElementById("dailyTotal");
+    const dailyCash = document.getElementById("dailyCash");
+    const dailyCard = document.getElementById("dailyCard");
+
+    const monthlyRange = document.getElementById("monthlyRange");
+    const monthlyTotal = document.getElementById("monthlyTotal");
+    const monthlyCash = document.getElementById("monthlyCash");
+    const monthlyCard = document.getElementById("monthlyCard");
+
+    const confirmDailyBtn = document.getElementById("confirmDailyBtn");
+    const confirmMonthlyBtn = document.getElementById("confirmMonthlyBtn");
+
+    const summaryMonthSelect = document.getElementById("summaryMonthSelect");
+    const summaryMonthlyTotal = document.getElementById("summaryMonthlyTotal");
+    const summaryCash = document.getElementById("summaryCash");
+    const summaryCard = document.getElementById("summaryCard");
+
+    let currentRevenueData = null;
+    let finalizedMonthlyRevenues = [];
+
+    // ===== SEGÉDFÜGGVÉNYEK =====
+
+    function formatFt(value) {
+      return `${Number(value).toLocaleString("hu-HU")} Ft`;
+    }
+
+    function hideAllPanels() {
+      summaryPanel.classList.add("hidden-panel");
+      monthlyPanel.classList.add("hidden-panel");
+      dailyPanel.classList.add("hidden-panel");
+
+      summaryBtn.classList.remove("active-tab");
+      monthlyBtn.classList.remove("active-tab");
+      dailyBtn.classList.remove("active-tab");
+    }
+
+    // ===== PANEL VÁLTÁS =====
+
+    summaryBtn.addEventListener("click", () => {
+      hideAllPanels();
+      summaryPanel.classList.remove("hidden-panel");
+      summaryBtn.classList.add("active-tab");
+    });
+
+    monthlyBtn.addEventListener("click", () => {
+      hideAllPanels();
+      monthlyPanel.classList.remove("hidden-panel");
+      monthlyBtn.classList.add("active-tab");
+    });
+
+    dailyBtn.addEventListener("click", () => {
+      hideAllPanels();
+      dailyPanel.classList.remove("hidden-panel");
+      dailyBtn.classList.add("active-tab");
+    });
+
+    cancelMonthlyBtn.addEventListener("click", () => {
+      hideAllPanels();
+    });
+
+    cancelDailyBtn.addEventListener("click", () => {
+      hideAllPanels();
+    });
+
+    // ===== AKTUÁLIS NAPI/HAVI BEVÉTEL LEKÉRÉSE =====
+
+    async function loadCurrentRevenue() {
+      try {
+        const response = await fetch("http://localhost:3000/api/revenue/current");
+        const data = await response.json();
+
+        if (!response.ok) {
+          alert(data.message || "Nem sikerült lekérni a bevételi adatokat.");
+          return;
+        }
+
+        currentRevenueData = data;
+
+        dailyDate.textContent = data.daily.date;
+        dailyTotal.textContent = formatFt(data.daily.total);
+        dailyCash.textContent = formatFt(data.daily.cash);
+        dailyCard.textContent = formatFt(data.daily.card);
+
+        monthlyRange.textContent = `${data.monthly.startDate} - ${data.monthly.endDate}`;
+        monthlyTotal.textContent = formatFt(data.monthly.total);
+        monthlyCash.textContent = formatFt(data.monthly.cash);
+        monthlyCard.textContent = formatFt(data.monthly.card);
+
+      } catch (error) {
+        console.error("Hiba a bevételi adatok lekérésekor:", error);
+        alert("Nem sikerült lekérni a bevételi adatokat.");
+      }
+    }
+
+    // ===== VÉGLEGESÍTETT HAVI BEVÉTELEK LEKÉRÉSE =====
+
+    async function loadFinalizedMonthlyRevenues() {
+      try {
+        const response = await fetch("http://localhost:3000/api/revenue/finalized-monthly");
+        const data = await response.json();
+
+        if (!response.ok) {
+          alert(data.message || "Nem sikerült lekérni a véglegesített havi bevételeket.");
+          return;
+        }
+
+        finalizedMonthlyRevenues = data;
+        summaryMonthSelect.innerHTML = '<option value="">Válassz hónapot</option>';
+
+        data.forEach((item, index) => {
+          const option = document.createElement("option");
+          option.value = index;
+          option.textContent = `${item.startDate} - ${item.endDate}`;
+          summaryMonthSelect.appendChild(option);
+        });
+
+      } catch (error) {
+        console.error("Hiba a véglegesített havi bevételek lekérésekor:", error);
+        alert("Nem sikerült lekérni a véglegesített havi bevételeket.");
+      }
+    }
+
+    // ===== ÖSSZEGZÉSEK LENYÍLÓ LISTA =====
+
+    summaryMonthSelect.addEventListener("change", () => {
+      const selectedIndex = summaryMonthSelect.value;
+
+      if (selectedIndex === "") {
+        summaryMonthlyTotal.textContent = "";
+        summaryCash.textContent = "";
+        summaryCard.textContent = "";
+        return;
+      }
+
+      const selectedRevenue = finalizedMonthlyRevenues[selectedIndex];
+
+      summaryMonthlyTotal.textContent = formatFt(selectedRevenue.total);
+      summaryCash.textContent = formatFt(selectedRevenue.cash);
+      summaryCard.textContent = formatFt(selectedRevenue.card);
+    });
+
+    // ===== NAPI VÉGLEGESÍTÉS =====
+
+    confirmDailyBtn.addEventListener("click", async () => {
+      if (!currentRevenueData) return;
+
+      const confirmed = confirm(
+        `Ezzel véglegesíted ${currentRevenueData.daily.date} napi bevételét, amit nem lehet utána megváltoztatni. Biztosan folytatni akarod?`
+      );
+
+      if (!confirmed) return;
+
+      try {
+        const response = await fetch("http://localhost:3000/api/revenue/finalize-daily", {
+          method: "POST"
+        });
+
+        const result = await response.json();
+
+        if (!response.ok) {
+          alert(result.message || "Nem sikerült véglegesíteni a napi bevételt.");
+          return;
+        }
+
+        alert("A napi bevétel sikeresen véglegesítve lett.");
+        hideAllPanels();
+      } catch (error) {
+        console.error("Hiba a napi véglegesítéskor:", error);
+        alert("Nem sikerült véglegesíteni a napi bevételt.");
+      }
+    });
+
+    // ===== HAVI VÉGLEGESÍTÉS =====
+
+    confirmMonthlyBtn.addEventListener("click", async () => {
+      if (!currentRevenueData) return;
+
+      const confirmed = confirm(
+        `Ezzel véglegesíted ${currentRevenueData.monthly.startDate}-${currentRevenueData.monthly.endDate} közötti bevételt, amit nem lehet utána módosítani. Biztosan folytatni akarod?`
+      );
+
+      if (!confirmed) return;
+
+      try {
+        const response = await fetch("http://localhost:3000/api/revenue/finalize-monthly", {
+          method: "POST"
+        });
+
+        const result = await response.json();
+
+        if (!response.ok) {
+          alert(result.message || "Nem sikerült véglegesíteni a havi bevételt.");
+          return;
+        }
+
+        alert("A havi bevétel sikeresen véglegesítve lett.");
+
+        // újratöltjük az aktuális és a véglegesített adatokat is
+        await loadCurrentRevenue();
+        await loadFinalizedMonthlyRevenues();
+
+        hideAllPanels();
+      } catch (error) {
+        console.error("Hiba a havi véglegesítéskor:", error);
+        alert("Nem sikerült véglegesíteni a havi bevételt.");
+      }
+    });
+
+    hideAllPanels();
+    loadCurrentRevenue();
+    loadFinalizedMonthlyRevenues();
+
   </script>
 </body>
 </html>

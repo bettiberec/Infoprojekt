@@ -11,6 +11,7 @@ app.use(express.json());
 
 const BOOKINGS_FILE = path.join(__dirname, "bookings.json");
 const ROOMS_FILE = path.join(__dirname, "rooms.json");
+const REVENUES_FILE = path.join(__dirname, "revenues.json");
 
 //JSON beolvasás
 function readJsonFile(path) {
@@ -27,6 +28,47 @@ function writeJsonFile(path, data) {
 app.get("/", (req, res) => {
   res.send("Szerver működik");
 });
+
+function formatLocalDate(date) {
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const day = String(date.getDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`;
+}
+
+function getTodayDateString() {
+  return formatLocalDate(new Date());
+}
+
+function getCurrentMonthRange() {
+  const now = new Date();
+  const firstDay = new Date(now.getFullYear(), now.getMonth(), 1);
+  const lastDay = new Date(now.getFullYear(), now.getMonth() + 1, 0);
+
+  return {
+    startDate: formatLocalDate(firstDay),
+    endDate: formatLocalDate(lastDay)
+  };
+}
+
+function calculateRevenue(bookings) {
+  let total = 0;
+  let cash = 0;
+  let card = 0;
+
+  for (const booking of bookings) {
+    const price = Number(booking.price || 0);
+    total += price;
+
+    if (booking.paymentMethod === "cash") {
+      cash += price;
+    } else if (booking.paymentMethod === "card") {
+      card += price;
+    }
+  }
+
+  return { total, cash, card };
+}
 
 //API hívások
 
@@ -235,9 +277,9 @@ app.patch("/api/bookings/:id", (req, res) => {
     status: "modified"
   };
 
-  let price = Number(updatedBooking.guests) * 6000;
+  let price = Number(updatedBooking.guests) * 4000;
   if (updatedBooking.bookingType === "birthday") {
-    price += 20000;
+    price = 58990;
   }
   updatedBooking.price = price;
 
@@ -248,4 +290,131 @@ app.patch("/api/bookings/:id", (req, res) => {
     message: "Foglalás sikeresen módosítva.",
     booking: updatedBooking
   });
+});
+
+//8. GET api/revenue --> aktuális bevétel lekérdezése
+app.get("/api/revenue/current", (req, res) => {
+  const bookings = readJsonFile(BOOKINGS_FILE);
+
+  const today = getTodayDateString();
+  const { startDate, endDate } = getCurrentMonthRange();
+
+  const dailyBookings = bookings.filter(b => b.date === today);
+  const monthlyBookings = bookings.filter(
+    b => b.date >= startDate && b.date <= endDate
+  );
+
+  const daily = calculateRevenue(dailyBookings);
+  const monthly = calculateRevenue(monthlyBookings);
+
+  res.json({
+    daily: {
+      date: today,
+      total: daily.total,
+      cash: daily.cash,
+      card: daily.card
+    },
+    monthly: {
+      startDate,
+      endDate,
+      total: monthly.total,
+      cash: monthly.cash,
+      card: monthly.card
+    }
+  });
+});
+
+//9. POST api/revenue --> napi bevétel véglegesítése
+app.post("/api/revenue/finalize-daily", (req, res) => {
+  const bookings = readJsonFile(BOOKINGS_FILE);
+  const revenues = readJsonFile(REVENUES_FILE);
+
+  const today = getTodayDateString();
+
+  const alreadyExists = revenues.find(
+    r => r.type === "daily" && r.date === today
+  );
+
+  if (alreadyExists) {
+    return res.status(409).json({
+      message: "Ehhez a naphoz már létezik véglegesített bevétel."
+    });
+  }
+
+  const dailyBookings = bookings.filter(b => b.date === today);
+  const summary = calculateRevenue(dailyBookings);
+
+  const record = {
+    id: Date.now().toString(),
+    type: "daily",
+    date: today,
+    total: summary.total,
+    cash: summary.cash,
+    card: summary.card,
+    finalizedAt: new Date().toISOString()
+  };
+
+  revenues.push(record);
+  writeJsonFile(REVENUES_FILE, revenues);
+
+  res.json({
+    message: "Napi bevétel sikeresen véglegesítve.",
+    revenue: record
+  });
+});
+
+//10. POST api/revenue --> havi bevétel véglegesítése
+app.post("/api/revenue/finalize-monthly", (req, res) => {
+  const bookings = readJsonFile(BOOKINGS_FILE);
+  const revenues = readJsonFile(REVENUES_FILE);
+
+  const { startDate, endDate } = getCurrentMonthRange();
+
+  const alreadyExists = revenues.find(
+    r =>
+      r.type === "monthly" &&
+      r.startDate === startDate &&
+      r.endDate === endDate
+  );
+
+  if (alreadyExists) {
+    return res.status(409).json({
+      message: "Ehhez a hónaphoz már létezik véglegesített bevétel."
+    });
+  }
+
+  const monthlyBookings = bookings.filter(
+    b => b.date >= startDate && b.date <= endDate
+  );
+
+  const summary = calculateRevenue(monthlyBookings);
+
+  const record = {
+    id: Date.now().toString(),
+    type: "monthly",
+    startDate,
+    endDate,
+    total: summary.total,
+    cash: summary.cash,
+    card: summary.card,
+    finalizedAt: new Date().toISOString()
+  };
+
+  revenues.push(record);
+  writeJsonFile(REVENUES_FILE, revenues);
+
+  res.json({
+    message: "Havi bevétel sikeresen véglegesítve.",
+    revenue: record
+  });
+});
+
+app.get("/api/revenue/finalized-monthly", (req, res) => {
+  const revenues = readJsonFile(REVENUES_FILE);
+
+  const monthlyRevenues = revenues
+    .filter(r => r.type === "monthly")
+    .sort((a, b) => a.startDate.localeCompare(b.startDate));
+
+  res.json(monthlyRevenues);
 });
